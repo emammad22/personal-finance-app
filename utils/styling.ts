@@ -7,8 +7,11 @@ const [shortDimension, longDimension] =
     ? [SCREEN_WIDTH, SCREEN_HEIGHT]
     : [SCREEN_HEIGHT, SCREEN_WIDTH];
 
-const guidelineBaseWidth = 375;
-const guidelineBaseHeight = 812;
+    console.log('sCREEM', SCREEN_WIDTH)
+    console.log('long', longDimension)
+
+const guidelineBaseWidth = 393;
+const guidelineBaseHeight = 852;
 
 export const scale = (size: number) =>
   Math.round(
