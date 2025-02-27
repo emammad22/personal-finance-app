@@ -5,14 +5,16 @@ import { Image, TouchableOpacity, View } from "react-native";
 import { colors } from "@/constants/theme";
 import Button from "@/components/Button";
 import Animated, { FadeIn, FadeInDown } from "react-native-reanimated";
+import { useRouter } from "expo-router";
 
 const Welcome = () => {
+  const router = useRouter();
   return (
     <ScreenWrapper>
       <View className={`flex-1 justify-between pt-[7px]`}>
         {/* header */}
         <View>
-          <TouchableOpacity className="self-end mr-7">
+          <TouchableOpacity className="self-end mr-7" onPress={() => router.push("/(auth)/sign-in")}>
             <Typo fontWeight={"500"}>Sign In</Typo>
           </TouchableOpacity>
           <Animated.Image
@@ -31,7 +33,9 @@ const Welcome = () => {
               of your finances
             </Typo>
           </Animated.View>
-          <Animated.View entering={FadeInDown.duration(1000).delay(100).springify().damping(12)} className="items-center gap-[2px]">
+          <Animated.View
+            entering={FadeInDown.duration(1000).delay(100).springify().damping(12)}
+            className="items-center gap-[2px]">
             <Typo size={17} color={colors.textLight}>
               Finances must be arranged to set a better
             </Typo>
@@ -39,8 +43,10 @@ const Welcome = () => {
               lifestyle in future
             </Typo>
           </Animated.View>
-          <Animated.View className="w-full px-6" entering={FadeInDown.duration(1000).delay(200).springify().damping(12)}>
-            <Button>
+          <Animated.View
+            className="w-full px-6"
+            entering={FadeInDown.duration(1000).delay(200).springify().damping(12)}>
+            <Button onPress={()=>router.push('/(auth)/sign-up')}>
               <Typo size={22} color={colors.neutral900} fontWeight={"600"}>
                 Get Started
               </Typo>

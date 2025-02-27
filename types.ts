@@ -36,7 +36,8 @@ export type TypoProps = {
   color?: string;
   fontWeight?: TextStyle["fontWeight"];
   children: any | null;
-  style?: TextStyle;
+  // style?: TextStyle;
+  className? : string,
   textProps?: TextProps;
 };
 
@@ -64,7 +65,8 @@ export type HeaderProps = {
 };
 
 export type BackButtonProps = {
-  style?: ViewStyle;
+  // style?: ViewStyle;
+  className?: string;
   iconSize?: number;
 };
 
@@ -106,7 +108,7 @@ export type TransactionItemProps = {
 export interface InputProps extends TextInputProps {
   icon?: React.ReactNode;
   containerStyle?: ViewStyle;
-  inputStyle?: TextStyle;
+  inputStyle?: string;
   inputRef?: React.RefObject<TextInput>;
   //   label?: string;
   //   error?: string;
@@ -143,15 +145,8 @@ export type UserDataType = {
 export type AuthContextType = {
   user: UserType;
   setUser: Function;
-  login: (
-    email: string,
-    password: string
-  ) => Promise<{ success: boolean; msg?: string }>;
-  register: (
-    email: string,
-    password: string,
-    name: string
-  ) => Promise<{ success: boolean; msg?: string }>;
+  login: (email: string, password: string) => Promise<{ success: boolean; msg?: string }>;
+  register: (email: string, password: string, name: string) => Promise<{ success: boolean; msg?: string }>;
   updateUserData: (userId: string) => Promise<void>;
 };
 

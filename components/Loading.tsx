@@ -1,4 +1,4 @@
- import { ActivityIndicator, ActivityIndicatorProps, Text, View } from 'react-native'
+ import { ActivityIndicator, ActivityIndicatorProps, View } from 'react-native'
  import React from 'react'
 import { colors } from '@/constants/theme'
  
