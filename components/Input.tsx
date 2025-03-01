@@ -9,9 +9,10 @@ const Input = (props: InputProps) => {
     <View className="flex flex-row items-center justify-center h-14 border border-neutral300 rounded-2xl px-4 gap-4">
       {props.icon && props.icon}
       <TextInput
+        value={props.value}
+        onChangeText={props.onChange}
         placeholderTextColor={colors.neutral400}
-        ref={props.inputRef && props.inputRef}
-        className={cn(`color-white text-[14px] flex-1`, props.inputStyle)}
+        className={cn(`color-white text-[14px] flex-1`, props.className)}
         {...props}
       />
     </View>

@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import ScreenWrapper from "@/components/ScreenWrapper";
-import { Alert, Pressable, View } from "react-native";
+import { Pressable, View } from "react-native";
 import BackButton from "@/components/BackButton";
 import Typo from "@/components/Typo";
 import { colors } from "@/constants/theme";
@@ -8,22 +8,24 @@ import Input from "@/components/Input";
 import * as Icons from "phosphor-react-native";
 import Button from "@/components/Button";
 import { useRouter } from "expo-router";
+import { Controller, useForm } from "react-hook-form";
 
 const SignUp = () => {
-  const emailRef = useRef("");
-  const passwordRef = useRef("");
-  const secPasswordRef = useRef("");
-  const firstNameRef = useRef("");
-  const lastNameRef = useRef("");
+  const form = useForm({
+    defaultValues: {
+      first_name: "",
+      last_name: "",
+      email: "",
+      password: "",
+      password2: "",
+    },
+  });
+
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  const handleSubmit = async () => {
-    if (!emailRef.current || !passwordRef.current || !firstNameRef.current) {
-      Alert.alert("Sign Up", "Please fill all the fields");
-      return;
-    }
-    console.log("email", emailRef.current);
+  const onSubmit = (data : any) => {
+    console.log("data", data);
   };
 
   return (
@@ -43,35 +45,66 @@ const SignUp = () => {
           <Typo size={16} color={colors.textLighter}>
             Create an account to track your expenses
           </Typo>
-          {/* input */}
-          <Input
-            onChangeText={(value) => (firstNameRef.current = value)}
-            placeholder="First name"
-            icon={<Icons.User size={26} color={colors.neutral300} weight="fill" />}
+          {/* inputs */}
+          <Controller
+            control={form.control}
+            name="first_name"
+            render={({ field }) => (
+              <Input
+                placeholder="First name"
+                icon={<Icons.User size={26} color={colors.neutral300} weight="fill" />}
+                {...field}
+              />
+            )}
           />
-          <Input
-            onChangeText={(value) => (lastNameRef.current = value)}
-            placeholder="Last name"
-            icon={<Icons.User size={26} color={colors.neutral300} weight="fill" />}
+          <Controller
+            control={form.control}
+            name="last_name"
+            render={({ field }) => (
+              <Input
+                placeholder="Last name"
+                icon={<Icons.User size={26} color={colors.neutral300} weight="fill" />}
+                {...field}
+              />
+            )}
           />
-          <Input
-            onChangeText={(value) => (emailRef.current = value)}
-            placeholder="Email"
-            icon={<Icons.At size={26} color={colors.neutral300} weight="fill" />}
+          <Controller
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <Input
+                placeholder="E-mail"
+                icon={<Icons.At size={26} color={colors.neutral300} weight="fill" />}
+                {...field}
+              />
+            )}
           />
-          <Input
-            onChangeText={(value) => (passwordRef.current = value)}
-            secureTextEntry
-            placeholder="Enter your password"
-            icon={<Icons.Key size={26} color={colors.neutral300} weight="fill" />}
+          <Controller
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <Input
+                placeholder="Password"
+                secureTextEntry
+                icon={<Icons.Key size={26} color={colors.neutral300} weight="fill" />}
+                {...field}
+              />
+            )}
           />
-          <Input
-            onChangeText={(value) => (secPasswordRef.current = value)}
-            secureTextEntry
-            placeholder="Enter your password once"
-            icon={<Icons.Key size={26} color={colors.neutral300} weight="fill" />}
+          <Controller
+            control={form.control}
+            name="password2"
+            render={({ field }) => (
+              <Input
+                placeholder="Password again"
+                secureTextEntry
+                icon={<Icons.Key size={26} color={colors.neutral300} weight="fill" />}
+                {...field}
+              />
+            )}
           />
-          <Button loading={isLoading} onPress={handleSubmit}>
+
+          <Button loading={isLoading} onPress={form.handleSubmit(onSubmit)}>
             <Typo color={colors.black} fontWeight={"700"} size={21}>
               Sign Up
             </Typo>

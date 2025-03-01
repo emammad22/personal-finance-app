@@ -4,8 +4,8 @@ import { Alert, Pressable, View } from "react-native";
 import BackButton from "@/components/BackButton";
 import Typo from "@/components/Typo";
 import { colors } from "@/constants/theme";
-import Input from "@/components/Input";
-import * as Icons from "phosphor-react-native";
+// import Input from "@/components/Input";
+// import * as Icons from "phosphor-react-native";
 import Button from "@/components/Button";
 import { useRouter } from "expo-router";
 
@@ -41,7 +41,7 @@ const SignIn = () => {
             Login now to track all your expenses
           </Typo>
           {/* input */}
-          <Input
+          {/* <Input
             onChangeText={(value) => (emailRef.current = value)}
             placeholder="Enter your email"
             icon={<Icons.User size={26} color={colors.neutral300} weight="fill" />}
@@ -51,7 +51,7 @@ const SignIn = () => {
             secureTextEntry
             placeholder="Enter your password"
             icon={<Icons.Key size={26} color={colors.neutral300} weight="fill" />}
-          />
+          /> */}
           <Typo className={"self-end"} size={14} color={colors.text}>
             Forgor Password?
           </Typo>

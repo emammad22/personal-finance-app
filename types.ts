@@ -2,6 +2,7 @@ import { Href } from "expo-router";
 // import { Firestore, Timestamp } from "firebase/firestore";
 import { Icon } from "phosphor-react-native";
 import React, { ReactNode } from "react";
+import { ControllerRenderProps } from "react-hook-form";
 import {
   ActivityIndicator,
   ActivityIndicatorProps,
@@ -105,13 +106,22 @@ export type TransactionItemProps = {
   handleClick: Function;
 };
 
-export interface InputProps extends TextInputProps {
-  icon?: React.ReactNode;
-  containerStyle?: ViewStyle;
-  inputStyle?: string;
-  inputRef?: React.RefObject<TextInput>;
+// export interface InputProps {
+  // field? : any,
+  // icon?: React.ReactNode;
+  // containerStyle?: ViewStyle;
+  // inputStyle?: string;
+  // inputRef?: React.RefObject<TextInput>;
   //   label?: string;
   //   error?: string;
+// }
+
+export interface InputProps extends TextInputProps {
+  icon?: React.ReactNode;
+  element?: React.ReactNode;
+  onChange?: ControllerRenderProps["onChange"];
+  onBlur?: ControllerRenderProps["onBlur"];
+  value?: string;
 }
 
 export interface CustomButtonProps extends TouchableOpacityProps {

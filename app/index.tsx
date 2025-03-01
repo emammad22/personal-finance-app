@@ -1,4 +1,4 @@
-import { Image, View } from "react-native";
+import { View } from "react-native";
 import React, { useEffect } from "react";
 import "@/global.css";
 import { useRouter } from "expo-router";
@@ -7,11 +7,11 @@ import Animated, { FadeInDown } from "react-native-reanimated";
 const Home = () => {
   const router = useRouter();
 
-  useEffect(() => {
-    setTimeout(() => {
-      router.push("/(auth)/welcome");
-    }, 2000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     router.push("/(auth)/welcome");
+  //   }, 2000);
+  // }, []);
 
   return (
     <View className="flex-1 bg-neutral900 justify-center items-center">
