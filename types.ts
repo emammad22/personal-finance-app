@@ -1,14 +1,7 @@
-import { Href } from "expo-router";
-// import { Firestore, Timestamp } from "firebase/firestore";
-import { Icon } from "phosphor-react-native";
+// import { Icon } from "phosphor-react-native";
 import React, { ReactNode } from "react";
 import { ControllerRenderProps } from "react-hook-form";
 import {
-  ActivityIndicator,
-  ActivityIndicatorProps,
-  ImageStyle,
-  PressableProps,
-  TextInput,
   TextInputProps,
   TextProps,
   TextStyle,
@@ -86,7 +79,7 @@ export type TransactionType = {
 export type CategoryType = {
   label: string;
   value: string;
-  icon: Icon;
+  // icon: Icon;
   bgColor: string;
 };
 export type ExpenseCategoriesType = {
@@ -111,7 +104,6 @@ export type TransactionItemProps = {
   // icon?: React.ReactNode;
   // containerStyle?: ViewStyle;
   // inputStyle?: string;
-  // inputRef?: React.RefObject<TextInput>;
   //   label?: string;
   //   error?: string;
 // }

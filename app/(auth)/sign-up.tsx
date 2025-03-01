@@ -5,7 +5,6 @@ import BackButton from "@/components/BackButton";
 import Typo from "@/components/Typo";
 import { colors } from "@/constants/theme";
 import Input from "@/components/Input";
-import * as Icons from "phosphor-react-native";
 import Button from "@/components/Button";
 import { useRouter } from "expo-router";
 import { Controller, useForm } from "react-hook-form";
@@ -52,7 +51,7 @@ const SignUp = () => {
             render={({ field }) => (
               <Input
                 placeholder="First name"
-                icon={<Icons.User size={26} color={colors.neutral300} weight="fill" />}
+                // icon={<Icons.User size={26} color={colors.neutral300} weight="fill" />}
                 {...field}
               />
             )}
@@ -63,7 +62,7 @@ const SignUp = () => {
             render={({ field }) => (
               <Input
                 placeholder="Last name"
-                icon={<Icons.User size={26} color={colors.neutral300} weight="fill" />}
+                // icon={<Icons.User size={26} color={colors.neutral300} weight="fill" />}
                 {...field}
               />
             )}
@@ -74,7 +73,7 @@ const SignUp = () => {
             render={({ field }) => (
               <Input
                 placeholder="E-mail"
-                icon={<Icons.At size={26} color={colors.neutral300} weight="fill" />}
+                // icon={<Icons.At size={26} color={colors.neutral300} weight="fill" />}
                 {...field}
               />
             )}
@@ -86,7 +85,7 @@ const SignUp = () => {
               <Input
                 placeholder="Password"
                 secureTextEntry
-                icon={<Icons.Key size={26} color={colors.neutral300} weight="fill" />}
+                // icon={<Icons.Key size={26} color={colors.neutral300} weight="fill" />}
                 {...field}
               />
             )}
@@ -98,7 +97,7 @@ const SignUp = () => {
               <Input
                 placeholder="Password again"
                 secureTextEntry
-                icon={<Icons.Key size={26} color={colors.neutral300} weight="fill" />}
+                // icon={<Icons.Key size={26} color={colors.neutral300} weight="fill" />}
                 {...field}
               />
             )}
