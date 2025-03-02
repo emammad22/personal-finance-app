@@ -11,7 +11,7 @@ const ScreenWrapper = ({ style, children }: ScreenWrapperProps) => {
 
   return (
     <View style={{ paddingTop }} className={`${style} flex-1 bg-neutral900`}>
-      <StatusBar barStyle={"light-content"} />
+      <StatusBar barStyle={'light-content'} />
       {children}
     </View> 
   );

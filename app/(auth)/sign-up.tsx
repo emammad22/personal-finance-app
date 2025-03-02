@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ScreenWrapper from "@/components/ScreenWrapper";
 import { Pressable, View } from "react-native";
 import BackButton from "@/components/BackButton";
@@ -8,6 +8,9 @@ import Input from "@/components/Input";
 import Button from "@/components/Button";
 import { useRouter } from "expo-router";
 import { Controller, useForm } from "react-hook-form";
+import { Lock, Mail, User } from "lucide-react-native";
+import { useAuthStore } from "@/services/store/useAuthStore";
+import Loading from "@/components/Loading";
 
 const SignUp = () => {
   const form = useForm({
@@ -15,16 +18,21 @@ const SignUp = () => {
       first_name: "",
       last_name: "",
       email: "",
-      password: "",
-      password2: "",
+      password: undefined,
+      password2: undefined,
     },
   });
 
-  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const { signUp, isSignInLoading, user} = useAuthStore();
 
-  const onSubmit = (data : any) => {
+  if(!isSignInLoading && user){
+    router.push('/(home)/user')
+  }
+
+  const onSubmit = (data: any) => {
     console.log("data", data);
+    signUp(data);
   };
 
   return (
@@ -51,7 +59,7 @@ const SignUp = () => {
             render={({ field }) => (
               <Input
                 placeholder="First name"
-                // icon={<Icons.User size={26} color={colors.neutral300} weight="fill" />}
+                icon={<User size={26} color={colors.neutral300} fontWeight={"fill"} />}
                 {...field}
               />
             )}
@@ -62,7 +70,7 @@ const SignUp = () => {
             render={({ field }) => (
               <Input
                 placeholder="Last name"
-                // icon={<Icons.User size={26} color={colors.neutral300} weight="fill" />}
+                icon={<User size={26} color={colors.neutral300} fontWeight={"fill"} />}
                 {...field}
               />
             )}
@@ -73,7 +81,7 @@ const SignUp = () => {
             render={({ field }) => (
               <Input
                 placeholder="E-mail"
-                // icon={<Icons.At size={26} color={colors.neutral300} weight="fill" />}
+                icon={<Mail size={26} color={colors.neutral300} fontWeight={"fill"} />}
                 {...field}
               />
             )}
@@ -85,7 +93,7 @@ const SignUp = () => {
               <Input
                 placeholder="Password"
                 secureTextEntry
-                // icon={<Icons.Key size={26} color={colors.neutral300} weight="fill" />}
+                icon={<Lock size={26} color={colors.neutral300} fontWeight={"fill"} />}
                 {...field}
               />
             )}
@@ -97,16 +105,20 @@ const SignUp = () => {
               <Input
                 placeholder="Password again"
                 secureTextEntry
-                // icon={<Icons.Key size={26} color={colors.neutral300} weight="fill" />}
+                icon={<Lock size={26} color={colors.neutral300} fontWeight={"fill"} />}
                 {...field}
               />
             )}
           />
 
-          <Button loading={isLoading} onPress={form.handleSubmit(onSubmit)}>
-            <Typo color={colors.black} fontWeight={"700"} size={21}>
-              Sign Up
-            </Typo>
+          <Button loading={isSignInLoading} onPress={form.handleSubmit(onSubmit)}>
+            {isSignInLoading ? (
+              <Loading color={"white"} />
+            ) : (
+              <Typo color={colors.black} fontWeight={"700"} size={21}>
+                Sign Up
+              </Typo>
+            )}
           </Button>
         </View>
         {/* footer */}

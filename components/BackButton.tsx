@@ -11,8 +11,7 @@ const BackButton = ({ iconSize = 26, className }: BackButtonProps) => {
     <TouchableOpacity
       className={cn(`flex flex-row items-center bg-neutral600 self-start rounded-xl p-2`, className)}
       onPress={() => router.back()}>
-        <ChevronLeft size={iconSize}/>
-      {/* <CaretLeft size={iconSize} color="white" weight="bold" /> */}
+      <ChevronLeft size={iconSize} color={"white"} />
     </TouchableOpacity>
   );
 };

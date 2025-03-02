@@ -1,26 +1,29 @@
-import React, { useRef, useState } from "react";
+import React, {useState } from "react";
 import ScreenWrapper from "@/components/ScreenWrapper";
-import { Alert, Pressable, View } from "react-native";
+import {Pressable, View } from "react-native";
 import BackButton from "@/components/BackButton";
 import Typo from "@/components/Typo";
 import { colors } from "@/constants/theme";
-// import Input from "@/components/Input";
-// import * as Icons from "phosphor-react-native";
 import Button from "@/components/Button";
 import { useRouter } from "expo-router";
+import { Controller, useForm } from "react-hook-form";
+import Input from "@/components/Input";
+import { Lock, Mail } from "lucide-react-native";
+import { useAuthStore } from "@/services/store/useAuthStore";
 
 const SignIn = () => {
-  const emailRef = useRef("");
-  const passwordRef = useRef("");
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
- 
-  const handleSubmit = async () => {
-    if(!emailRef.current || !passwordRef.current){
-        Alert.alert("Login", "Please fill all the fields");
-        return
-    }
-    console.log('email', emailRef.current)
+  const form = useForm();
+  const {signIn, isAuth} = useAuthStore();
+
+  if(isAuth){
+    router.navigate('/(home)/user')
+  }
+
+  const onSubmit = (data: any) => {
+    signIn(data)
+    console.log("data in sign in", data);
   };
 
   return (
@@ -41,21 +44,34 @@ const SignIn = () => {
             Login now to track all your expenses
           </Typo>
           {/* input */}
-          {/* <Input
-            onChangeText={(value) => (emailRef.current = value)}
-            placeholder="Enter your email"
-            icon={<Icons.User size={26} color={colors.neutral300} weight="fill" />}
+          <Controller
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <Input
+                placeholder="E-mail"
+                icon={<Mail size={26} color={colors.neutral300} fontWeight={"fill"} />}
+                {...field}
+              />
+            )}
           />
-          <Input
-            onChangeText={(value) => (passwordRef.current = value)}
-            secureTextEntry
-            placeholder="Enter your password"
-            icon={<Icons.Key size={26} color={colors.neutral300} weight="fill" />}
-          /> */}
+          <Controller
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <Input
+                placeholder="Password"
+                secureTextEntry
+                icon={<Lock size={26} color={colors.neutral300} fontWeight={"fill"} />}
+                {...field}
+              />
+            )}
+          />
+
           <Typo className={"self-end"} size={14} color={colors.text}>
             Forgor Password?
           </Typo>
-          <Button loading={isLoading} onPress={handleSubmit}>
+          <Button loading={isLoading} onPress={form.handleSubmit(onSubmit)}>
             <Typo color={colors.black} fontWeight={"700"} size={21}>
               Sign In
             </Typo>
@@ -64,10 +80,12 @@ const SignIn = () => {
         {/* footer */}
 
         <View className="flex flex-row justify-center items-center gap-2">
-            <Typo size={15}>Don`t have an account?</Typo>
-            <Pressable onPress={()=> router.push('/(auth)/sign-up')}>
-                <Typo size={15} fontWeight={'700'} color={colors.primary}>Sign Up</Typo>
-            </Pressable>
+          <Typo size={15}>Don`t have an account?</Typo>
+          <Pressable onPress={() => router.push("/(auth)/sign-up")}>
+            <Typo size={15} fontWeight={"700"} color={colors.primary}>
+              Sign Up
+            </Typo>
+          </Pressable>
         </View>
       </View>
     </ScreenWrapper>
