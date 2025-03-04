@@ -8,7 +8,7 @@ queryClient.ensureQueryData(currentUserDetailQuery());
 const RootLayout = () => {
   return (
     <QueryClientProvider client={queryClient}>
-        <Stack screenOptions={{ headerShown: false }} />
+      <Stack screenOptions={{ headerShown: false }} />
     </QueryClientProvider>
   );
 };

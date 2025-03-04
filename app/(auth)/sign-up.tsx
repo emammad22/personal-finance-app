@@ -24,9 +24,7 @@ const SignUp = () => {
   });
 
   const router = useRouter();
-  const { signUp, isSignInLoading} = useAuthStore();
-
-
+  const { signUp, isSignInLoading } = useAuthStore();
 
   const onSubmit = (data: any) => {
     console.log("data", data);

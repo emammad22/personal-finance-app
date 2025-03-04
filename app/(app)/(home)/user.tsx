@@ -13,8 +13,8 @@ const Home = () => {
 
   const signOut = async () => {
     try {
-      await AsyncStorage.multiRemove(['access_token', 'refresh_token']);
-      query.clear()
+      await AsyncStorage.multiRemove(["access_token", "refresh_token"]);
+      query.clear();
       router.replace("/(auth)/sign-in");
     } catch (err) {
       console.log("sign out err", err);
@@ -72,4 +72,3 @@ const Home = () => {
 };
 
 export default Home;
-

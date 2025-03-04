@@ -16,7 +16,7 @@ type ResponseType = User;
 const getCurrentUser = async (): Promise<ResponseType> => {
   try {
     const response = await getData(authEndpoints.user);
-    console.log('curr user', response)
+    console.log("curr user", response);
     return response;
   } catch (error) {
     console.error("Error current user", error);

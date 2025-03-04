@@ -16,10 +16,10 @@ type ResponseType = {
 };
 
 const login = async (body: RequestType): Promise<ResponseType> => {
-    console.log('log', body)
+  console.log("log", body);
   try {
-    const response = await axios.post(authEndpoints.signIn, body)
-    console.log('sign res', response.data)
+    const response = await axios.post(authEndpoints.signIn, body);
+    console.log("sign res", response.data);
     return response.data;
   } catch (error) {
     console.error("Error login", error);

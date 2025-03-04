@@ -18,7 +18,7 @@ const SignIn = () => {
   const signInMutation = useSignIn();
 
   const onSubmit = (data: any) => {
-    signInMutation.mutate(data)
+    signInMutation.mutate(data);
     console.log("data in sign in", data);
   };
 

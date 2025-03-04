@@ -9,7 +9,7 @@ import { useRouter } from "expo-router";
 
 const Welcome = () => {
   const router = useRouter();
- 
+
   return (
     <ScreenWrapper>
       <View className={`flex-1 justify-between pt-[7px]`}>
