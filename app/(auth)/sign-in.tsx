@@ -1,6 +1,6 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import ScreenWrapper from "@/components/ScreenWrapper";
-import {Pressable, View } from "react-native";
+import { Pressable, View } from "react-native";
 import BackButton from "@/components/BackButton";
 import Typo from "@/components/Typo";
 import { colors } from "@/constants/theme";
@@ -9,20 +9,16 @@ import { useRouter } from "expo-router";
 import { Controller, useForm } from "react-hook-form";
 import Input from "@/components/Input";
 import { Lock, Mail } from "lucide-react-native";
-import { useAuthStore } from "@/services/store/useAuthStore";
+import { useSignIn } from "@/features/auth/queries/use-sign-in";
 
 const SignIn = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const form = useForm();
-  const {signIn, isAuth} = useAuthStore();
 
-  if(isAuth){
-    router.navigate('/(home)/user')
-  }
+  const signInMutation = useSignIn();
 
   const onSubmit = (data: any) => {
-    signIn(data)
+    signInMutation.mutate(data)
     console.log("data in sign in", data);
   };
 
@@ -71,7 +67,7 @@ const SignIn = () => {
           <Typo className={"self-end"} size={14} color={colors.text}>
             Forgor Password?
           </Typo>
-          <Button loading={isLoading} onPress={form.handleSubmit(onSubmit)}>
+          <Button loading={signInMutation.isPending} onPress={form.handleSubmit(onSubmit)}>
             <Typo color={colors.black} fontWeight={"700"} size={21}>
               Sign In
             </Typo>

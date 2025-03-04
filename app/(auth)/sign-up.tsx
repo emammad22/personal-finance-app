@@ -24,11 +24,9 @@ const SignUp = () => {
   });
 
   const router = useRouter();
-  const { signUp, isSignInLoading, user} = useAuthStore();
+  const { signUp, isSignInLoading} = useAuthStore();
 
-  if(!isSignInLoading && user){
-    router.push('/(home)/user')
-  }
+
 
   const onSubmit = (data: any) => {
     console.log("data", data);

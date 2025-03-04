@@ -3,18 +3,13 @@ import React, { useEffect } from "react";
 import "@/global.css";
 import { useRouter } from "expo-router";
 import Animated, { FadeInDown } from "react-native-reanimated";
-import { useAuthStore } from "@/services/store/useAuthStore";
 
 const Home = () => {
   const router = useRouter();
-  const {user} = useAuthStore();
-  if(user){
-    router.push('/(home)/user')
-  }
 
   useEffect(() => {
     setTimeout(() => {
-      router.push("/(auth)/welcome");
+      router.navigate("/(auth)/welcome");
     }, 2000);
   }, []);
 

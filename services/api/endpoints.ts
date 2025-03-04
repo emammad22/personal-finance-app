@@ -1,6 +1,7 @@
 const authEndpoints = new (class {
-  signIn = "login/";
-  signUp = "register/";
+  signIn = "account/login/";
+  signUp = "account/register/";
+  user = "account/user/";
 })();
 
 export { authEndpoints };

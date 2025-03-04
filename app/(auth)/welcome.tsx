@@ -1,7 +1,7 @@
 import React from "react";
 import ScreenWrapper from "@/components/ScreenWrapper";
 import Typo from "@/components/Typo";
-import { Image, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { colors } from "@/constants/theme";
 import Button from "@/components/Button";
 import Animated, { FadeIn, FadeInDown } from "react-native-reanimated";
@@ -9,6 +9,7 @@ import { useRouter } from "expo-router";
 
 const Welcome = () => {
   const router = useRouter();
+ 
   return (
     <ScreenWrapper>
       <View className={`flex-1 justify-between pt-[7px]`}>
@@ -46,7 +47,7 @@ const Welcome = () => {
           <Animated.View
             className="w-full px-6"
             entering={FadeInDown.duration(1000).delay(200).springify().damping(12)}>
-            <Button onPress={()=>router.push('/(auth)/sign-up')}>
+            <Button onPress={() => router.push("/(auth)/sign-up")}>
               <Typo size={22} color={colors.neutral900} fontWeight={"600"}>
                 Get Started
               </Typo>
