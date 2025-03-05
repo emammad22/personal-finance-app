@@ -6,10 +6,14 @@ import { useRouter } from "expo-router";
 import { Bell, LogOut } from "lucide-react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useQueryClient } from "@tanstack/react-query";
+import { useCurrentUser } from "@/features/auth/queries/use-current-user";
 
 const Home = () => {
   const router = useRouter();
   const query = useQueryClient();
+
+  const {data} = useCurrentUser();
+  console.log('user data', data)
 
   const signOut = async () => {
     try {
@@ -28,7 +32,7 @@ const Home = () => {
           <View className="flex flex-row w-full justify-between">
             <View className="flex flex-row items-center gap-3">
               {/* Profile Btn */}
-              <TouchableOpacity onPress={() => router.push("/(app)/(home)/profile")}>
+              <TouchableOpacity onPress={() => router.push("/(app)/(home)/history")}>
                 <View className="rounded-full h-[40px] w-[40px] flex flex-row justify-center items-center">
                   {/* <User color={"white"} /> */}
                   <Image
@@ -41,7 +45,7 @@ const Home = () => {
               {/* User greeting */}
               <View>
                 <Typo size={20} fontWeight={"700"}>
-                  Salam, Eltun!
+                  Salam, {data?.fullname}!
                 </Typo>
                 <Typo size={12}>Sizi yenidən görmək xoşdur :)</Typo>
               </View>
@@ -59,13 +63,13 @@ const Home = () => {
             <View className="flex flex-col gap-1">
               <Typo size={14}>Total balance to spend</Typo>
               <Typo size={30} fontWeight={"700"}>
-                $5758.92
+                ${data?.total_spent}
               </Typo>
             </View>
           </View>
         </View>
 
-        <View className="bg-white flex-1 rounded-t-3xl"></View>
+        <View className="bg-[#eaeaea] flex-1 rounded-t-3xl"></View>
       </View>
     </SafeAreaView>
   );
