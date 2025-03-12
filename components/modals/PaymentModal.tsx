@@ -27,27 +27,27 @@ const ScanModal = () => {
             <Text className="text-[20px] mb-4 font-bold">Ödəniş üsulunu seçin</Text>
             <View className="flex flex-row justify-between gap-3">
               <TouchableOpacity>
-                <View className="flex flex-col items-center rounded-[20px] bg-primary/80 h-[110px] w-[110px]">
+                <View className="flex flex-col items-center rounded-[20px] bg-[#AA60C8]/80 h-[110px] w-[110px]">
                   <View className="flex justify-center items-center p-2">
-                    <ScanBarcode size={50} color={"#222"} />
+                    <ScanBarcode size={50} color={"white"} />
                   </View>
-                  <Text>QR scan edin</Text>
+                  <Text className="text-white">QR scan edin</Text>
                 </View>
               </TouchableOpacity>
               <TouchableOpacity>
-                <View className="flex flex-col items-center rounded-[20px] bg-primary/80 h-[110px] w-[110px]">
+                <View className="flex flex-col items-center rounded-[20px] bg-[#AA60C8]/80 h-[110px] w-[110px]">
                   <View className="flex justify-center items-center p-2">
-                    <CameraIcon size={50} color={"#222"} />
+                    <CameraIcon size={50} color={"white"} />
                   </View>
-                  <Text>Şəkil çək</Text>
+                  <Text className="text-white">Şəkil çək</Text>
                 </View>
               </TouchableOpacity>
               <TouchableOpacity onPress={addTransaction}>
-                <View className="flex flex-col items-center rounded-[20px] bg-primary/80 h-[110px] w-[110px]">
+                <View className="flex flex-col items-center rounded-[20px] bg-[#AA60C8]/80 h-[110px] w-[110px]">
                   <View className="flex justify-center items-center p-2">
-                    <TextCursorInputIcon size={50} color={"#222"} />
+                    <TextCursorInputIcon size={50} color={"white"} />
                   </View>
-                  <Text className="text-center">Transaction əlavə et</Text>
+                  <Text className="text-center text-white">Transaction əlavə et</Text>
                 </View>
               </TouchableOpacity>
             </View>

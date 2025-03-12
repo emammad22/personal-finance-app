@@ -1,4 +1,4 @@
-import { Pressable, SafeAreaView, Text, View } from "react-native";
+import { Pressable, SafeAreaView, StatusBar, Text, View } from "react-native";
 import React from "react";
 import { Star } from "lucide-react-native";
 import BackButton from "@/components/BackButton";
@@ -50,18 +50,19 @@ const AddTransaction = () => {
     setTransactionName(type);
   };
 
-  const onSubmit = (data : any)=>{
-    transactionMutation.mutate(data)
-    console.log('onsubmit transaction', data)
-  }
+  const onSubmit = (data: any) => {
+    transactionMutation.mutate(data);
+    console.log("onsubmit transaction", data);
+  };
 
   return (
-    <SafeAreaView className="flex-1 bg-primary/15">
+    <SafeAreaView className="flex-1 bg-[#eaeaea]">
+      <StatusBar barStyle={"dark-content"} />
       {/* container */}
       <FormProvider {...form}>
         <View className="p-3">
           <View className="flex flex-row justify-between items-center">
-            <BackButton className="bg-white" color="black" />
+            <BackButton className="bg-[#AA60C8]" color="white" />
             <Text className="text-[15px]">Entry</Text>
             <View>
               <Star color={"#222"} size={24} />
@@ -69,7 +70,7 @@ const AddTransaction = () => {
           </View>
           {/* Transaction form */}
           <View className="flex flex-col gap-5">
-            <Text className="text-[22px] mb-3 text-center font-semibold text-primaryDark">Transaction Form</Text>
+            <Text className="text-[22px] mb-3 text-center font-semibold text-[#2c1a47]">Transaction Form</Text>
             <View className="flex flex-col gap-2">
               <Controller
                 control={form.control}
@@ -82,7 +83,7 @@ const AddTransaction = () => {
                 control={form.control}
                 name="note"
                 render={({ field }) => {
-                  return <Input className="color-black"  placeholder="Note" {...field} />;
+                  return <Input className="color-black" placeholder="Note" {...field} />;
                 }}
               />
               <Controller
@@ -95,8 +96,8 @@ const AddTransaction = () => {
                       className="w-full flex justify-center h-14 border border-neutral300 rounded-2xl px-4">
                       <View className="text-neutral400 flex flex-row items-center gap-2">
                         <Text>Payment Type :</Text>
-                        <View className="text-black rounded-[30px] p-2 bg-primary">
-                          <Text className="text-white">{form?.watch(field.name)}</Text>
+                        <View className="rounded-[20px]">
+                          <Text className="text-black text-[18px] font-semibold">{form?.watch(field.name)}</Text>
                         </View>
                       </View>
                     </Pressable>
@@ -140,7 +141,12 @@ const AddTransaction = () => {
                 }}
               />
             </View>
-            <Button loading={transactionMutation.isPending} onPress={form.handleSubmit(onSubmit)} classname="text-white font-semibold text-[18px]">Add Transaction</Button>
+            <Button
+              loading={transactionMutation.isPending}
+              onPress={form.handleSubmit(onSubmit)}
+              classname="text-white font-semibold text-[18px]">
+              Add Transaction
+            </Button>
           </View>
         </View>
         <TransactionModal />

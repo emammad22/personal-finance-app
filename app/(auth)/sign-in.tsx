@@ -25,7 +25,7 @@ const SignIn = () => {
   return (
     <ScreenWrapper>
       <View className="flex-1 gap-8 px-5">
-        <BackButton />
+        <BackButton className="bg-[#AA60C8]"/>
         <View className="mt-5 gap-2">
           <Typo size={30} fontWeight={"800"}>
             Hey,
@@ -68,7 +68,7 @@ const SignIn = () => {
             Forgor Password?
           </Typo>
           <Button loading={signInMutation.isPending} onPress={form.handleSubmit(onSubmit)}>
-            <Typo color={colors.black} fontWeight={"700"} size={21}>
+            <Typo color={colors.white} fontWeight={"700"} size={21}>
               Sign In
             </Typo>
           </Button>
@@ -78,7 +78,7 @@ const SignIn = () => {
         <View className="flex flex-row justify-center items-center gap-2">
           <Typo size={15}>Don`t have an account?</Typo>
           <Pressable onPress={() => router.push("/(auth)/sign-up")}>
-            <Typo size={15} fontWeight={"700"} color={colors.primary}>
+            <Typo size={15} fontWeight={"700"} color={"#AA60C8"}>
               Sign Up
             </Typo>
           </Pressable>

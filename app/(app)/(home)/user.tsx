@@ -26,9 +26,9 @@ const Home = () => {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-primary" edges={["top"]}>
+    <SafeAreaView className="flex-1 bg-[#AA60C8]" edges={["top"]}>
       <View className="flex-1">
-        <View className="bg-primary h-[20%] flex flex-col justify-around w-full px-5">
+        <View className="bg-[#AA60C8] h-[20%] flex flex-col justify-around w-full px-5">
           <View className="flex flex-row w-full justify-between">
             <View className="flex flex-row items-center gap-3">
               {/* Profile Btn */}

@@ -48,7 +48,7 @@ const Welcome = () => {
             className="w-full px-6"
             entering={FadeInDown.duration(1000).delay(200).springify().damping(12)}>
             <Button onPress={() => router.push("/(auth)/sign-up")}>
-              <Typo size={22} color={colors.neutral900} fontWeight={"600"}>
+              <Typo size={22} color={colors.white} fontWeight={"600"}>
                 Get Started
               </Typo>
             </Button>
