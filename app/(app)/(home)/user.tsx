@@ -12,8 +12,8 @@ const Home = () => {
   const router = useRouter();
   const query = useQueryClient();
 
-  const {data} = useCurrentUser();
-  console.log('user data', data)
+  const { data } = useCurrentUser();
+  console.log("user data", data);
 
   const signOut = async () => {
     try {
@@ -52,7 +52,7 @@ const Home = () => {
             </View>
             <View className="flex flex-row self-center gap-3">
               <TouchableOpacity>
-                <Bell color={"white"}  onPress={()=> router.navigate('/(app)/(modals)/modal')}/>
+                <Bell color={"white"} />
               </TouchableOpacity>
               <TouchableOpacity onPress={signOut}>
                 <LogOut color={"white"} />

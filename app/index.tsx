@@ -4,6 +4,8 @@ import "@/global.css";
 import { useRouter } from "expo-router";
 import Animated, { FadeInDown } from "react-native-reanimated";
 
+
+
 const Home = () => {
   const router = useRouter();
 

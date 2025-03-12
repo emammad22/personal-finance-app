@@ -4,4 +4,9 @@ const authEndpoints = new (class {
   user = "account/user/";
 })();
 
-export { authEndpoints };
+const paymentEndpoints = new (class {
+  categories = "payment/category-datas/";
+  create = "payment/create-transaction/";
+})();
+
+export { authEndpoints, paymentEndpoints };

@@ -1,13 +1,7 @@
 // import { Icon } from "phosphor-react-native";
 import React, { ReactNode } from "react";
 import { ControllerRenderProps } from "react-hook-form";
-import {
-  TextInputProps,
-  TextProps,
-  TextStyle,
-  TouchableOpacityProps,
-  ViewStyle,
-} from "react-native";
+import { TextInputProps, TextProps, TextStyle, TouchableOpacityProps, ViewStyle } from "react-native";
 
 export type ScreenWrapperProps = {
   style?: string;
@@ -31,7 +25,7 @@ export type TypoProps = {
   fontWeight?: TextStyle["fontWeight"];
   children: any | null;
   // style?: TextStyle;
-  className? : string,
+  className?: string;
   textProps?: TextProps;
 };
 
@@ -62,7 +56,16 @@ export type BackButtonProps = {
   // style?: ViewStyle;
   className?: string;
   iconSize?: number;
+  color?: string;
 };
+
+export enum Transaction {
+  cash = "Cash",
+  bank_account = "Bank Account",
+  card = "Card",
+  expense = "Expense",
+  income = "Income",
+}
 
 export type TransactionType = {
   id?: string;
@@ -100,12 +103,12 @@ export type TransactionItemProps = {
 };
 
 // export interface InputProps {
-  // field? : any,
-  // icon?: React.ReactNode;
-  // containerStyle?: ViewStyle;
-  // inputStyle?: string;
-  //   label?: string;
-  //   error?: string;
+// field? : any,
+// icon?: React.ReactNode;
+// containerStyle?: ViewStyle;
+// inputStyle?: string;
+//   label?: string;
+//   error?: string;
 // }
 
 export interface InputProps extends TextInputProps {

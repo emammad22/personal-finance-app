@@ -6,7 +6,7 @@ import { colors } from "@/constants/theme";
 
 const Input = (props: InputProps) => {
   return (
-    <View className="flex flex-row items-center justify-center h-14 border border-neutral300 rounded-2xl px-4 gap-4">
+    <View className="flex flex-row items-center h-14 border border-neutral300 rounded-2xl px-4 gap-4">
       {props.icon && props.icon}
       <TextInput
         value={props.value}

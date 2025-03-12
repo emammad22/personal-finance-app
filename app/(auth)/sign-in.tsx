@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ScreenWrapper from "@/components/ScreenWrapper";
 import { Pressable, View } from "react-native";
 import BackButton from "@/components/BackButton";

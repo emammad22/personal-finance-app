@@ -1,10 +1,33 @@
-import { History, ListCollapse, Scan, ScanBarcode, User, WalletCards } from "lucide-react-native";
+import {
+  BadgeDollarSign,
+  Banknote,
+  CreditCard,
+  HandCoins,
+  History,
+  Home,
+  PlusIcon,
+  User,
+  WalletCards,
+  WalletMinimal,
+} from "lucide-react-native";
 
-const icon: Record<"user" | "history" | "modal" | "savedtransactions", (props: { color: string }) => JSX.Element> = {
-  user: (props: any) => <User size={24} color={"#222"} {...props} />,
+const icon: Record<
+  "user" | "history" | "modal" | "savedtransactions" | "profile",
+  (props: { color: string }) => JSX.Element
+> = {
+  user: (props: any) => <Home size={24} color={"#222"} {...props} />,
   history: (props: any) => <History size={24} color={"#222"} {...props} />,
-  modal: (props: any) => <ScanBarcode size={24} color={"#222"} {...props} />,
+  modal: (props: any) => <PlusIcon size={24} color={"#222"} {...props} />,
   savedtransactions: (props: any) => <WalletCards size={24} color={"#222"} {...props} />,
+  profile: (props: any) => <User size={24} color={"#222"} {...props} />,
 };
 
-export { icon };
+const transactionIcons = {
+  cash: <BadgeDollarSign size={30} color={"#fff"} />,
+  bank_account: <WalletMinimal size={30} color={"#fff"} />,
+  card: <CreditCard size={30} color={"#fff"} />,
+  expense: <Banknote size={30} color={"#fff"} />,
+  income: <HandCoins size={30} color={"#fff"} />,
+};
+
+export { icon, transactionIcons };
