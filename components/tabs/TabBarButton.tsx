@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { icon } from "@/constants/icon";
 import Animated, { interpolate, useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated";
 
-type TabNames = "user" | "history" | "more";
+type TabNames = "user" | "history" | "modal" | "savedtransactions";
 
 const TabBarButton = ({
   onPress,

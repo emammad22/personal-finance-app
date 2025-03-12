@@ -52,7 +52,7 @@ const Home = () => {
             </View>
             <View className="flex flex-row self-center gap-3">
               <TouchableOpacity>
-                <Bell color={"white"} />
+                <Bell color={"white"}  onPress={()=> router.navigate('/(app)/(modals)/modal')}/>
               </TouchableOpacity>
               <TouchableOpacity onPress={signOut}>
                 <LogOut color={"white"} />

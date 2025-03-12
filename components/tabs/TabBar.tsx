@@ -40,20 +40,13 @@ const TabBar = ({ state, descriptors, navigation }: { state: any; descriptors: a
           tabPositionX.value = withSpring(buttonWidth * index, { duration: 1500 });
           const event = navigation.emit({
             type: "onPress",
-            target: route.key,
+            target: route.key ,
             canPreventDefault: true,
           });
 
           if (!isFocused && !event.defaultPrevented) {
             navigation.navigate(route.name, route.params);
           }
-        };
-
-        const onLongPress = () => {
-          navigation.emit({
-            type: "tabLongPress",
-            target: route.key,
-          });
         };
 
         return (
