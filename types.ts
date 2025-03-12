@@ -65,6 +65,10 @@ export enum Transaction {
   card = "Card",
   expense = "Expense",
   income = "Income",
+  Travel = "Travel",
+  Food = "Food",
+  Other = "Other",
+  Transport = "Transport",
 }
 
 export type TransactionType = {
@@ -124,6 +128,7 @@ export interface CustomButtonProps extends TouchableOpacityProps {
   onPress?: () => void;
   loading?: boolean;
   children: React.ReactNode;
+  classname? : string,
 }
 
 export type ImageUploadProps = {

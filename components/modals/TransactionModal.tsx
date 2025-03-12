@@ -7,7 +7,6 @@ import { useFormContext } from "react-hook-form";
 
 const TransactionModal = () => {
   const { isTransactionOpen, setTransactionOpen, transactionDatas, transactionName } = useTransactionModal();
-
   const form = useFormContext();
 
   const handleInput = (type: string) => {
@@ -25,16 +24,16 @@ const TransactionModal = () => {
       <TouchableWithoutFeedback onPress={setTransactionOpen}>
         <View className="flex-1 justify-end">
           <View className="bg-white p-5 rounded-t-[30px] h-[330px]">
-            <Text className="text-[20px] mb-4 font-bold">Ödəniş üsulunu seçin</Text>
-            <View className="flex flex-row gap-3">
-              {transactionDatas?.map((type, index) => {
+            <Text className="text-[20px] mb-4 font-bold">{transactionName} növünü seçin</Text>
+            <View className="flex flex-row gap-3 flex-wrap">
+              {transactionDatas?.map(({ name, value }, index) => {
                 return (
                   <TouchableOpacity
-                    onPress={() => handleInput(type)}
+                    onPress={() => handleInput(value)}
                     key={index}
                     className="w-[110px] p-5 flex items-center justify-center rounded-[20px] h-[80px] bg-primary gap-2">
-                    <View>{transactionIcons[type]}</View>{" "}
-                    <Text className="text-white text-center">{Transaction[type]}</Text>
+                    <View>{transactionIcons?.[name]}</View>{" "}
+                    <Text className="text-white text-center">{Transaction[name]}</Text>
                   </TouchableOpacity>
                 );
               })}

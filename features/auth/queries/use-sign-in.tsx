@@ -1,6 +1,4 @@
-import { instance } from "@/services/api";
 import { authEndpoints } from "@/services/api/endpoints";
-import { postData } from "@/services/api/requests";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
@@ -25,7 +23,7 @@ const login = async (body: RequestType): Promise<ResponseType> => {
     console.error("Error login", error);
     throw error;
   }
-};
+}; 
 
 const useSignIn = () => {
   return useMutation<ResponseType, Error, RequestType>({

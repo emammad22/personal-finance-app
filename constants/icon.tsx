@@ -1,10 +1,14 @@
 import {
   BadgeDollarSign,
   Banknote,
+  BusIcon,
+  CakeSlice,
   CreditCard,
+  Dice6Icon,
   HandCoins,
   History,
   Home,
+  Plane,
   PlusIcon,
   User,
   WalletCards,
@@ -28,6 +32,10 @@ const transactionIcons = {
   card: <CreditCard size={30} color={"#fff"} />,
   expense: <Banknote size={30} color={"#fff"} />,
   income: <HandCoins size={30} color={"#fff"} />,
+  Travel : <Plane size={30} color={"#fff"}/>,
+  Food : <CakeSlice size={30} color={"#fff"}/>,
+  Transport : <BusIcon size={30} color={"#fff"}/>,
+  Other : <Dice6Icon size={30} color={"#fff"}/>
 };
 
 export { icon, transactionIcons };
