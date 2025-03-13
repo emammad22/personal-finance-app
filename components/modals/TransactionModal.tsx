@@ -2,7 +2,7 @@ import { Modal, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "r
 import React from "react";
 import { useTransactionModal } from "@/services/store/useTransactionModal";
 import { transactionIcons } from "@/constants/icon";
-import { Transaction } from "@/types";
+import { ETransaction } from "@/types";
 import { useFormContext } from "react-hook-form";
 
 const TransactionModal = () => {
@@ -33,7 +33,7 @@ const TransactionModal = () => {
                     key={index}
                     className="w-[110px] p-5 flex items-center justify-center rounded-[20px] h-[80px] bg-[#AA60C8]/80 gap-2">
                     <View>{transactionIcons?.[name as keyof typeof transactionIcons]}</View>
-                    <Text className="text-white text-center font-bold">{Transaction[name as keyof typeof Transaction]}</Text>
+                    <Text className="text-white text-center font-bold">{ETransaction[name as keyof typeof ETransaction]}</Text>
                   </TouchableOpacity>
                 );
               })}

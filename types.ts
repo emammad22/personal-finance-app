@@ -59,7 +59,7 @@ export type BackButtonProps = {
   color?: string;
 };
 
-export enum Transaction {
+export enum ETransaction {
   cash = "Cash",
   bank_account = "Bank Account",
   card = "Card",

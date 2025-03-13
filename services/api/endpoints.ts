@@ -9,4 +9,10 @@ const paymentEndpoints = new (class {
   create = "payment/create-transaction/";
 })();
 
-export { authEndpoints, paymentEndpoints };
+const transactionEndpoints = new (class {
+  transactions = "payment/transactions/";
+  savedTransactions = "payment/saved-transactions/";
+  save = (transaction_id: number) => `payment/transactions/${transaction_id}/toggle-save/`;
+})();
+
+export { authEndpoints, paymentEndpoints, transactionEndpoints };
