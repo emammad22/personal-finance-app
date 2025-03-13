@@ -9,6 +9,8 @@ import TransactionModal from "@/components/modals/TransactionModal";
 import { useTransactionModal } from "@/services/store/useTransactionModal";
 import Button from "@/components/Button";
 import { useCreateTransaction } from "@/features/home/queries/use-create-transaction";
+import SelectModal from "@/components/select-modal";
+import SuccessfulModal from "@/components/modals/SuccessfulModal";
 
 const AddTransaction = () => {
   const form = useForm();
@@ -32,21 +34,9 @@ const AddTransaction = () => {
     value: item.id,
   }));
 
-  const handlePayment = (type: string) => {
+  const handleSelect = (type: string, list: any[]) => {
     setTransactionOpen();
-    setTransactionData(convertPaymentData);
-    setTransactionName(type);
-  };
-
-  const handleTransaction = (type: string) => {
-    setTransactionOpen();
-    setTransactionData(convertedTransactionData);
-    setTransactionName(type);
-  };
-
-  const handleCategory = (type: string) => {
-    setTransactionOpen();
-    setTransactionData(convertedCategoryData);
+    setTransactionData(list);
     setTransactionName(type);
   };
 
@@ -90,54 +80,21 @@ const AddTransaction = () => {
                 control={form.control}
                 name="payment_type"
                 render={({ field }) => {
-                  return (
-                    <Pressable
-                      onPress={() => handlePayment(field?.name)}
-                      className="w-full flex justify-center h-14 border border-neutral300 rounded-2xl px-4">
-                      <View className="text-neutral400 flex flex-row items-center gap-2">
-                        <Text>Payment Type :</Text>
-                        <View className="rounded-[20px]">
-                          <Text className="text-black text-[18px] font-semibold">{form?.watch(field.name)}</Text>
-                        </View>
-                      </View>
-                    </Pressable>
-                  );
+                  return <SelectModal handleSelect={handleSelect} list={convertPaymentData} {...field} />;
                 }}
               />
               <Controller
                 control={form.control}
                 name="transaction_type"
                 render={({ field }) => {
-                  return (
-                    <Pressable
-                      onPress={() => handleTransaction(field?.name)}
-                      className="w-full flex justify-center h-14 border border-neutral300 rounded-2xl px-4">
-                      <View className="text-neutral400 flex flex-row items-center gap-2">
-                        <Text>Transaction Type :</Text>
-                        <View className="text-black rounded-[30px] p-2 bg-primary">
-                          <Text className="text-white">{form?.watch(field.name)}</Text>
-                        </View>
-                      </View>
-                    </Pressable>
-                  );
+                  return <SelectModal handleSelect={handleSelect} list={convertedTransactionData} {...field} />;
                 }}
               />
               <Controller
                 control={form.control}
                 name="category"
                 render={({ field }) => {
-                  return (
-                    <Pressable
-                      onPress={() => handleCategory(field?.name)}
-                      className="w-full flex justify-center h-14 border border-neutral300 rounded-2xl px-4">
-                      <View className="text-neutral400 flex flex-row items-center gap-2">
-                        <Text>Category Type :</Text>
-                        <View className="text-black rounded-[30px] p-2 bg-primary">
-                          <Text className="text-white">{form?.watch(field.name)}</Text>
-                        </View>
-                      </View>
-                    </Pressable>
-                  );
+                  return <SelectModal handleSelect={handleSelect} list={convertedCategoryData} {...field} />;
                 }}
               />
             </View>
@@ -150,6 +107,7 @@ const AddTransaction = () => {
           </View>
         </View>
         <TransactionModal />
+        <SuccessfulModal link={'/(app)/(home)/history'}/>
       </FormProvider>
     </SafeAreaView>
   );

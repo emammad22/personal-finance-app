@@ -3,10 +3,10 @@ import { create } from "zustand";
 type TransactionModalProps = {
   transactionName: string;
   isTransactionOpen: boolean;
-  transactionDatas: [];
+  transactionDatas: any[];
   setTransactionName: (name: string) => void;
   setTransactionOpen: () => void;
-  setTransactionData: (data: []) => void;
+  setTransactionData: (data: any[]) => void;
 };
 
 const useTransactionModal = create<TransactionModalProps>((set) => ({
@@ -16,7 +16,7 @@ const useTransactionModal = create<TransactionModalProps>((set) => ({
   setTransactionName: (name) => {
     set({ transactionName: name });
   },
-  setTransactionData: (data) => {
+  setTransactionData: (data : any[]) => {
     set({ transactionDatas: data });
   },
   setTransactionOpen: () => {
