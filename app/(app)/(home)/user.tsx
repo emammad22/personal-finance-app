@@ -1,4 +1,4 @@
-import { Image, TouchableOpacity, View } from "react-native";
+import { Image, TouchableOpacity, View , ScrollView} from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Typo from "@/components/Typo";
@@ -7,6 +7,7 @@ import { Bell, LogOut } from "lucide-react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCurrentUser } from "@/features/auth/queries/use-current-user";
+import RecentTransactions from "@/components/transactions/recent-transactions";
 
 const Home = () => {
   const router = useRouter();
@@ -68,8 +69,11 @@ const Home = () => {
             </View>
           </View>
         </View>
-
-        <View className="bg-[#eaeaea] flex-1 rounded-t-3xl"></View>
+          <View className="bg-[#eaeaea] flex-1 rounded-t-3xl p-5">
+        <ScrollView>
+            <RecentTransactions />
+        </ScrollView>
+          </View>
       </View>
     </SafeAreaView>
   );
