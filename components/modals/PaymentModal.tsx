@@ -3,14 +3,25 @@ import React from "react";
 import { usePaymentModal } from "@/services/store/usePaymentModal";
 import { CameraIcon, ScanBarcode, TextCursorInputIcon } from "lucide-react-native";
 import { useRouter } from "expo-router";
+import { useCameraPermissions } from "expo-camera";
 
 const ScanModal = () => {
   const { isModalOpen, setModalOpen } = usePaymentModal();
   const router = useRouter();
+  const [permission, requestPermission] = useCameraPermissions();
+
+  const isPermissionGranted: boolean | undefined = permission?.granted;
 
   const addTransaction = () => {
     router.push("/(app)/addTransaction");
     setModalOpen();
+  };
+
+  const handleQrScanner = async() => {
+    requestPermission();
+    if (isPermissionGranted) {
+      router.navigate("/(app)/scanner");
+    }
   };
 
   return (
@@ -26,7 +37,7 @@ const ScanModal = () => {
           <View className="bg-white p-5 rounded-t-[30px] h-[230px]">
             <Text className="text-[20px] mb-4 font-bold">Ödəniş üsulunu seçin</Text>
             <View className="flex flex-row justify-between gap-3">
-              <TouchableOpacity>
+              <TouchableOpacity onPress={handleQrScanner}>
                 <View className="flex flex-col items-center rounded-[20px] bg-[#AA60C8]/80 h-[110px] w-[110px]">
                   <View className="flex justify-center items-center p-2">
                     <ScanBarcode size={50} color={"white"} />

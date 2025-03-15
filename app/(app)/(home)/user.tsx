@@ -27,9 +27,9 @@ const Home = () => {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-[#AA60C8]" edges={["top"]}>
+    <SafeAreaView className="flex-1 bg-[#307BF6]" edges={["top"]}>
       <View className="flex-1">
-        <View className="bg-[#AA60C8] h-[20%] flex flex-col justify-around w-full px-5">
+        <View className="bg-[#307BF6] h-[20%] flex flex-col justify-around w-full px-5">
           <View className="flex flex-row w-full justify-between">
             <View className="flex flex-row items-center gap-3">
               {/* Profile Btn */}
@@ -69,7 +69,7 @@ const Home = () => {
             </View>
           </View>
         </View>
-          <View className="bg-[#eaeaea] flex-1 rounded-t-3xl p-5">
+          <View className="bg-[#fff] flex-1 rounded-t-3xl p-5">
         <ScrollView>
             <RecentTransactions />
         </ScrollView>
