@@ -17,7 +17,7 @@ import {
 
 const icon: Record<
   "user" | "history" | "modal" | "savedtransactions" | "profile",
-  (props: { color: string }) => JSX.Element
+  (props: { color: string , opacity : number}) => JSX.Element
 > = {
   user: (props: any) => <Home size={24} color={"#222"} {...props} />,
   history: (props: any) => <History size={24} color={"#222"} {...props} />,

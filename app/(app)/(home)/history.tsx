@@ -1,7 +1,7 @@
 import { Image, ScrollView, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Transaction from "@/components/Transaction";
+import Transaction from "@/components/transactions/history-transaction";
 import { useTransactions } from "@/features/home/queries/use-transactions";
 import { TransactionProps } from "@/features/home/types";
 import { ChevronDown, CreditCard, SearchIcon, SlidersHorizontal } from "lucide-react-native";
@@ -35,7 +35,7 @@ const History = () => {
         <ScrollView
           className="flex flex-col bg-[#E0E8F2]"
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 10 }}>
+          contentContainerStyle={{ paddingBottom: 110, paddingTop : 20 }}>
           {/* Filter */}
           {/* Transaction List */}
           <View className="flex-1 flex-col gap-[15px] px-4 overflow-y">

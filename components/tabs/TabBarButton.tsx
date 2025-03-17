@@ -21,8 +21,8 @@ const TabBarButton = ({
 }) => {
   return (
     <Pressable className="flex flex-1 gap-2 items-center justify-center" onPress={onPress} onLongPress={onLongPress}>
-      <View>{icon[routeName as TabNames] && icon[routeName as TabNames]({ color: isFocused ? "#AA60C8" : "#222" })}</View>
-      <Text className={`${isFocused ? "text-[#AA60C8]" : "text-[#222]"} text-[12px]`}>{label}</Text>
+      <View>{icon[routeName as TabNames] && icon[routeName as TabNames]({ color:  "#307BF6" , opacity : isFocused ? 1 : 0.6})}</View>
+      <Text className={`${isFocused ? "text-[#307BF6]" : "text-[#307BF6]/40"} text-[12px]`}>{label}</Text>
     </Pressable>
   );
 };

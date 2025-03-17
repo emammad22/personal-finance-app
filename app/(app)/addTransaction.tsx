@@ -11,11 +11,14 @@ import Button from "@/components/Button";
 import { useCreateTransaction } from "@/features/home/queries/use-create-transaction";
 import SelectModal from "@/components/select-modal";
 import SuccessfulModal from "@/components/modals/SuccessfulModal";
+import { router } from "expo-router";
+import { useSuccessModal } from "@/services/store/useSuccessModal";
 
 const AddTransaction = () => {
   const form = useForm();
 
   const { setTransactionOpen, setTransactionData, setTransactionName } = useTransactionModal();
+  const {setCloseSuccess} = useSuccessModal()
   const transactionMutation = useCreateTransaction();
   const categoryQuery = useCategoryData();
 
@@ -44,6 +47,11 @@ const AddTransaction = () => {
     transactionMutation.mutate(data);
     console.log("onsubmit transaction", data);
   };
+
+  const handleLook = ()=>{
+    router.navigate('/(app)/(home)/history');
+    setCloseSuccess();
+  }
 
   return (
     <SafeAreaView className="flex-1 bg-[#eaeaea]">
@@ -107,7 +115,7 @@ const AddTransaction = () => {
           </View>
         </View>
         <TransactionModal />
-        <SuccessfulModal link={'/(app)/(home)/history'}/>
+        <SuccessfulModal secondaryFn={handleLook} main="Yenisini yarat" secondary="Tranzaksiyalara bax"/>
       </FormProvider>
     </SafeAreaView>
   );
