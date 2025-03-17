@@ -132,6 +132,7 @@ export interface CustomButtonProps extends TouchableOpacityProps {
   loading?: boolean;
   children: React.ReactNode;
   classname?: string;
+  textStyle? : string
 }
 
 export type ImageUploadProps = {

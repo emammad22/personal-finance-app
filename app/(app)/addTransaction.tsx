@@ -18,7 +18,7 @@ const AddTransaction = () => {
   const form = useForm();
 
   const { setTransactionOpen, setTransactionData, setTransactionName } = useTransactionModal();
-  const {setCloseSuccess} = useSuccessModal()
+  const { setCloseSuccess } = useSuccessModal();
   const transactionMutation = useCreateTransaction();
   const categoryQuery = useCategoryData();
 
@@ -48,10 +48,10 @@ const AddTransaction = () => {
     console.log("onsubmit transaction", data);
   };
 
-  const handleLook = ()=>{
-    router.navigate('/(app)/(home)/history');
+  const handleLook = () => {
+    router.navigate("/(app)/(home)/history");
     setCloseSuccess();
-  }
+  };
 
   return (
     <SafeAreaView className="flex-1 bg-[#eaeaea]">
@@ -60,7 +60,7 @@ const AddTransaction = () => {
       <FormProvider {...form}>
         <View className="p-3">
           <View className="flex flex-row justify-between items-center">
-            <BackButton className="bg-[#AA60C8]" color="white" />
+            <BackButton className="bg-[#307BF6]" color="white" />
             <Text className="text-[15px]">Entry</Text>
             <View>
               <Star color={"#222"} size={24} />
@@ -109,13 +109,14 @@ const AddTransaction = () => {
             <Button
               loading={transactionMutation.isPending}
               onPress={form.handleSubmit(onSubmit)}
-              classname="text-white font-semibold text-[18px]">
+              textStyle="text-white font-semibold text-[18px]"
+              classname="bg-[#307BF6]">
               Add Transaction
             </Button>
           </View>
         </View>
         <TransactionModal />
-        <SuccessfulModal secondaryFn={handleLook} main="Yenisini yarat" secondary="Tranzaksiyalara bax"/>
+        <SuccessfulModal secondaryFn={handleLook} main="Yenisini yarat" secondary="Tranzaksiyalara bax" />
       </FormProvider>
     </SafeAreaView>
   );

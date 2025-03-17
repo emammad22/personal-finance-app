@@ -16,7 +16,7 @@ const Home = () => {
   }, []);
 
   return (
-    <View className="flex-1 bg-neutral900 justify-center items-center">
+    <View className="flex-1 bg-[#307BF6]/60 justify-center items-center">
       <Animated.Image
         entering={FadeInDown.duration(1000).delay(200).springify().damping(12)}
         className="aspect-square h-[20%]"

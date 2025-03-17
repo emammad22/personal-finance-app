@@ -38,7 +38,7 @@ const ScanModal = () => {
             <Text className="text-[20px] mb-4 font-bold">Ödəniş üsulunu seçin</Text>
             <View className="flex flex-row justify-between gap-3">
               <TouchableOpacity onPress={handleQrScanner}>
-                <View className="flex flex-col items-center rounded-[20px] bg-[#AA60C8]/80 h-[110px] w-[110px]">
+                <View className="flex flex-col items-center rounded-[20px] bg-[#307BF6]/80 h-[110px] w-[110px]">
                   <View className="flex justify-center items-center p-2">
                     <ScanBarcode size={50} color={"white"} />
                   </View>
@@ -46,7 +46,7 @@ const ScanModal = () => {
                 </View>
               </TouchableOpacity>
               <TouchableOpacity>
-                <View className="flex flex-col items-center rounded-[20px] bg-[#AA60C8]/80 h-[110px] w-[110px]">
+                <View className="flex flex-col items-center rounded-[20px] bg-[#307BF6]/80 h-[110px] w-[110px]">
                   <View className="flex justify-center items-center p-2">
                     <CameraIcon size={50} color={"white"} />
                   </View>
@@ -54,7 +54,7 @@ const ScanModal = () => {
                 </View>
               </TouchableOpacity>
               <TouchableOpacity onPress={addTransaction}>
-                <View className="flex flex-col items-center rounded-[20px] bg-[#AA60C8]/80 h-[110px] w-[110px]">
+                <View className="flex flex-col items-center rounded-[20px] bg-[#307BF6]/80 h-[110px] w-[110px]">
                   <View className="flex justify-center items-center p-2">
                     <TextCursorInputIcon size={50} color={"white"} />
                   </View>

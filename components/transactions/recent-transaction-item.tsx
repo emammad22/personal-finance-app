@@ -5,7 +5,7 @@ import { transactionIcons } from "@/constants/icon";
 
 const RecentTransactionItem = ({ category, amount, transaction_type }: TransactionProps) => {
   return (
-    <View className="bg-white rounded-[15px] flex flex-row  justify-between">
+    <View className="bg-white rounded-[15px] w-full flex flex-row  justify-between">
       <View className="flex flex-row gap-3">
         <View className="w-[52px] h-[52px] rounded-[12px] bg-[#B3C5F7] flex justify-center items-center">
           {transactionIcons[category.name as keyof typeof transactionIcons]({size : 30})}

@@ -6,6 +6,7 @@ import { useTransactions } from "@/features/home/queries/use-transactions";
 import { TransactionProps } from "@/features/home/types";
 import { ChevronDown, CreditCard, SearchIcon, SlidersHorizontal } from "lucide-react-native";
 import { Link } from "expo-router";
+import SuccessfulModal from "@/components/modals/SuccessfulModal";
 
 const History = () => {
   const transactionQuery = useTransactions();
@@ -34,7 +35,7 @@ const History = () => {
         </View>
 
         <ScrollView
-          className="flex flex-col bg-[#E0E8F2]/70"
+          className="flex flex-col  bg-[#E0E8F2]/70"
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingBottom: 110, paddingTop: 20 }}>
           {/* Filter */}
@@ -43,14 +44,15 @@ const History = () => {
             {/* Transaction Card */}
             {transactionQuery?.data?.map((transaction: TransactionProps, idx: number) => {
               return (
-                <Link href={`/(app)/transactionDetail/${transaction.id}`}>
-                  <Transaction key={idx} {...transaction} />
+                <Link key={idx} href={`/(app)/transactionDetail/${transaction.id}`}>
+                  <Transaction {...transaction} />
                 </Link>
               );
             })}
           </View>
         </ScrollView>
       </View>
+      <SuccessfulModal />
     </SafeAreaView>
   );
 };

@@ -1,6 +1,6 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import React from "react";
-import { useRouter } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { useTransactions } from "@/features/home/queries/use-transactions";
 import { TransactionProps } from "@/features/home/types";
 import RecentTransactionItem from "./recent-transaction-item";
@@ -24,7 +24,11 @@ const RecentTransactions = () => {
       <View className="border border-[#E0E8F2]"></View>
       <View className="p-5 flex flex-col gap-[15px]">
         {transactionQuery.data?.slice(0, 5).map((transaction: TransactionProps, idx: number) => {
-          return <RecentTransactionItem key={idx} {...transaction} />;
+          return (
+            <Link href={`/(app)/transactionDetail/${transaction?.id}`}>
+              <RecentTransactionItem key={idx} {...transaction} />
+            </Link>
+          );
         })}
       </View>
     </View>
