@@ -6,10 +6,10 @@ import { transactionIcons } from "@/constants/icon";
 
 const Transaction = ({ category, payment_type, amount, transaction_unique_id, transaction_type }: TransactionProps) => {
   return (
-    <View className="border bg-white rounded-[15px] p-4 border-[#E0E8F2]/60 flex flex-row  justify-between">
+    <View className="border bg-white rounded-[15px] p-4 border-[#E0E8F2]/60 flex flex-row w-full  justify-between">
       <View className="flex flex-row gap-3">
         <View className="w-[52px] h-[52px] rounded-[12px] bg-[#B3C5F7] flex justify-center items-center">
-          {transactionIcons[category.name as keyof typeof transactionIcons]}
+          {transactionIcons[category.name as keyof typeof transactionIcons]({size : 30})}
         </View>
         <View className="flex flex-col gap-[5px]">
           <Text className="font-bold text-[18px]">{category.name}</Text>

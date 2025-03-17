@@ -12,6 +12,7 @@ const paymentEndpoints = new (class {
 const transactionEndpoints = new (class {
   transactions = "payment/transactions/";
   savedTransactions = "payment/saved-transactions/";
+  details = (id : number)=> `payment/transactions/${id}`
   save = (transaction_id: number) => `payment/transactions/${transaction_id}/toggle-save/`;
 })();
 

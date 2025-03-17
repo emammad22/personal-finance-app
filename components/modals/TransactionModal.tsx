@@ -32,7 +32,7 @@ const TransactionModal = () => {
                     onPress={() => handleInput(value)}
                     key={index}
                     className="w-[110px] p-5 flex items-center justify-center rounded-[20px] h-[80px] bg-[#AA60C8]/80 gap-2">
-                    <View>{transactionIcons?.[name as keyof typeof transactionIcons]}</View>
+                    <View>{transactionIcons?.[name as keyof typeof transactionIcons]({size : 30})}</View>
                     <Text className="text-white text-center font-bold">{ETransaction[name as keyof typeof ETransaction]}</Text>
                   </TouchableOpacity>
                 );

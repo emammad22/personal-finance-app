@@ -9,13 +9,13 @@ const Scanner = () => {
   const { width, height } = Dimensions.get("window");
   const { setSuccess, setCloseSuccess } = useSuccessModal();
   const [scanned, setScanned] = useState(false);
-  const [cameraKey, setCameraKey] = useState(Date.now());
-
+  const [isCameraActive, setIsCameraActive] = useState(false);
 
   useFocusEffect(
     useCallback(() => {
-      setCameraKey(Date.now()); // Change key to force re-mount
-    }, [])
+      setIsCameraActive(true);
+      return () => setIsCameraActive(false);
+    }, []),
   );
 
   console.log("width, height", width, height);
@@ -39,22 +39,23 @@ const Scanner = () => {
   };
 
   const handleNewQR = () => {
-    setCloseSuccess()
+    setCloseSuccess();
     setScanned(false);
     // router.navigate('/(app)/scanner')
   };
 
-  const handleNavigate = ()=>{
-    setCloseSuccess()
+  const handleNavigate = () => {
+    setCloseSuccess();
+    setIsCameraActive(false);
     setScanned(false);
-    router.navigate('/(app)/(home)/user')
-  }
+    router.navigate("/(app)/(home)/user");
+  };
 
   return (
     <SafeAreaView className="flex-1" style={StyleSheet.absoluteFillObject}>
       <CameraView
-      key={cameraKey}
-      active={!scanned}
+        autofocus="on"
+        active={isCameraActive}
         barcodeScannerSettings={{
           barcodeTypes: ["qr"],
         }}

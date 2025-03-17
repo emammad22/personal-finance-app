@@ -1,10 +1,11 @@
-import { Image, ScrollView, StatusBar, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Transaction from "@/components/transactions/history-transaction";
 import { useTransactions } from "@/features/home/queries/use-transactions";
 import { TransactionProps } from "@/features/home/types";
 import { ChevronDown, CreditCard, SearchIcon, SlidersHorizontal } from "lucide-react-native";
+import { Link } from "expo-router";
 
 const History = () => {
   const transactionQuery = useTransactions();
@@ -20,7 +21,7 @@ const History = () => {
               <CreditCard size={27} color={"white"} />
               <Text className="text-white text-[15px]">ending with **9749</Text>
             </View>
-            <ChevronDown size={27} color={'white'}/>
+            <ChevronDown size={27} color={"white"} />
           </View>
           <View className="flex flex-row items-center gap-3">
             <TouchableOpacity className="border border-[#E0E8F2] bg-white rounded-[8px] w-[45px] h-[45px] flex items-center justify-center">
@@ -33,15 +34,19 @@ const History = () => {
         </View>
 
         <ScrollView
-          className="flex flex-col bg-[#E0E8F2]"
+          className="flex flex-col bg-[#E0E8F2]/70"
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 110, paddingTop : 20 }}>
+          contentContainerStyle={{ paddingBottom: 110, paddingTop: 20 }}>
           {/* Filter */}
           {/* Transaction List */}
           <View className="flex-1 flex-col gap-[15px] px-4 overflow-y">
             {/* Transaction Card */}
             {transactionQuery?.data?.map((transaction: TransactionProps, idx: number) => {
-              return <Transaction key={idx} {...transaction} />;
+              return (
+                <Link href={`/(app)/transactionDetail/${transaction.id}`}>
+                  <Transaction key={idx} {...transaction} />
+                </Link>
+              );
             })}
           </View>
         </ScrollView>

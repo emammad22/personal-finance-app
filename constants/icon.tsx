@@ -17,7 +17,7 @@ import {
 
 const icon: Record<
   "user" | "history" | "modal" | "savedtransactions" | "profile",
-  (props: { color: string , opacity : number}) => JSX.Element
+  (props: { color: string; opacity: number }) => JSX.Element
 > = {
   user: (props: any) => <Home size={24} color={"#222"} {...props} />,
   history: (props: any) => <History size={24} color={"#222"} {...props} />,
@@ -27,15 +27,15 @@ const icon: Record<
 };
 
 const transactionIcons = {
-  cash: <BadgeDollarSign size={30} color={"#fff"} />,
-  bank_account: <WalletMinimal size={30} color={"#fff"} />,
-  card: <CreditCard size={30} color={"#fff"} />,
-  expense: <Banknote size={30} color={"#fff"} />,
-  income: <HandCoins size={30} color={"#fff"} />,
-  Travel : <Plane size={30} color={"#fff"}/>,
-  Food : <CakeSlice size={30} color={"#fff"}/>,
-  Transport : <BusIcon size={30} color={"#fff"}/>,
-  Other : <Dice6Icon size={30} color={"#fff"}/>
+  cash: (props: any) => <BadgeDollarSign size={props.size} color={"#fff"} />,
+  bank_account: (props: any) => <WalletMinimal size={props.size} color={"#fff"} />,
+  card: (props: any) => <CreditCard size={props.size} color={"#fff"} />,
+  expense: (props: any) => <Banknote size={props.size} color={"#fff"} />,
+  income: (props: any) => <HandCoins size={props.size} color={"#fff"} />,
+  Travel: (props: any) => <Plane size={props.size} color={"#fff"} />,
+  Food: (props: any) => <CakeSlice size={props.size} color={"#fff"} />,
+  Transport: (props: any) => <BusIcon size={props.size}color={"#fff"} />,
+  Other: (props: any) => <Dice6Icon size={props.size} color={"#fff"} />,
 };
 
 export { icon, transactionIcons };
