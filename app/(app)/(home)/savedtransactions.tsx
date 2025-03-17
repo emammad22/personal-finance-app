@@ -1,11 +1,12 @@
-import { Text, View } from 'react-native'
+import { SafeAreaView, StatusBar, Text } from 'react-native'
 import React from 'react'
 
 const SavedTransactions = () => {
   return (
-    <View>
+    <SafeAreaView>
+      <StatusBar barStyle={'dark-content'}/>
       <Text>saved-transactions</Text>
-    </View>
+    </SafeAreaView>
   )
 }
 

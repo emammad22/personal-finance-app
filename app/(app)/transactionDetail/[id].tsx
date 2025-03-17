@@ -5,16 +5,21 @@ import { ArrowLeftRight, ChevronLeft, DollarSign, FilePenLine, Heart, NotebookPe
 import { useTransactionDetail } from "@/features/home/queries/use-transaction-detail";
 import { transactionIcons } from "@/constants/icon";
 import { useDeleteTransaction } from "@/features/home/queries/use-delete-transaction";
-import SuccessfulModal from "@/components/modals/SuccessfulModal";
+import { useSaveTransaction } from "@/features/home/queries/use-save-transaction";
 
 const TransactionDetail = () => {
   const { id } = useLocalSearchParams();
 
   const transactionDetailQuery = useTransactionDetail(Number(id));
   const deleteTransactionQuery = useDeleteTransaction();
+  const saveTransactionQuery = useSaveTransaction();
 
   const handleDelete = () => {
     deleteTransactionQuery.mutate(Number(id));
+  };
+
+  const handleSave = () => {
+    saveTransactionQuery.mutate(Number(id));
   };
 
   const date = new Date(transactionDetailQuery.data?.created_at as string).toLocaleString();
@@ -47,8 +52,14 @@ const TransactionDetail = () => {
             <TouchableOpacity className="bg-[#A7E8BD] w-[60px] h-[60px] flex justify-center items-center rounded-full">
               <FilePenLine color={"#fff"} size={35} />
             </TouchableOpacity>
-            <TouchableOpacity className="bg-[#E07A5F] w-[60px] h-[60px] flex justify-center items-center rounded-full">
-              <Heart size={35} color={"#fff"} />
+            <TouchableOpacity
+              onPress={handleSave}
+              className="bg-[#E07A5F] w-[60px] h-[60px] flex justify-center items-center rounded-full">
+              <Heart
+                size={35}
+                color={transactionDetailQuery.data?.is_saved ? "red" : "#fff"}
+                fill={transactionDetailQuery.data?.is_saved ? "red" : "white"}
+              />
             </TouchableOpacity>
           </View>
         </View>
