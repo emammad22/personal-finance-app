@@ -17,7 +17,7 @@ const History = () => {
       {/* container */}
       <View>
         <View className="bg-white h-[45px] flex flex-row item gap-3 m-5">
-          <View className="accounts-select bg-[#4E27EC]/30 flex flex-row items-center justify-between basis-[70%] rounded-[8px] p-3">
+          <View className="accounts-select bg-[#307BF6]/50 flex flex-row items-center justify-between basis-[70%] rounded-[8px] p-3">
             <View className="flex flex-row items-center gap-2">
               <CreditCard size={27} color={"white"} />
               <Text className="text-white text-[15px]">ending with **9749</Text>
