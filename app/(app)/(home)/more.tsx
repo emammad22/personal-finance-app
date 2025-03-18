@@ -1,8 +1,11 @@
 import { Image, SafeAreaView, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { ChevronRight, Star } from "lucide-react-native";
+import { useRouter } from "expo-router";
 
 const Profile = () => {
+  const router = useRouter();
+
   return (
     <SafeAreaView className="flex-1 bg-[#F6F8FA]">
       <StatusBar barStyle={"dark-content"} />
@@ -13,18 +16,20 @@ const Profile = () => {
           <Text className="text-[35px] font-bold">Daha çox</Text>
         </View>
         {/* user profile nav */}
-        <View className="bg-white p-5 rounded-[10px] flex flex-row items-center justify-between">
-          <View className="bg-[#eaeaea] rounded-full p-2">
-            <Image className="w-[40px] h-[40px]" source={require("@/assets/images/usernew.svg")} />
+        <TouchableOpacity onPress={() => router.navigate("/(app)/(more)/profile")}>
+          <View className="bg-white p-5 rounded-[10px] flex flex-row items-center justify-between">
+            <View className="bg-[#eaeaea] rounded-full p-2">
+              <Image className="w-[40px] h-[40px]" source={require("@/assets/images/usernew.svg")} />
+            </View>
+            <View className="flex flex-col gap-1">
+              <Text className="text-[20px]">Eltun Məmmədov</Text>
+              <Text className="text-[16px]">QR və şəxsi məlumatlarım</Text>
+            </View>
+            <TouchableOpacity>
+              <ChevronRight size={25} color={"#eaeaea"} />
+            </TouchableOpacity>
           </View>
-          <View className="flex flex-col gap-1">
-            <Text className="text-[20px]">Eltun Məmmədov</Text>
-            <Text className="text-[16px]">QR və şəxsi məlumatlarım</Text>
-          </View>
-          <TouchableOpacity>
-            <ChevronRight size={25} color={"#eaeaea"} />
-          </TouchableOpacity>
-        </View>
+        </TouchableOpacity>
         {/* Products and transactions */}
         <View className="bg-white p-5 rounded-[10px] gap-6 flex flex-col">
           <Text className="font-semibold text-[16px]">Məhsullar və əməliyyatlar</Text>
