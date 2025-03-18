@@ -1,7 +1,7 @@
 import { transactionEndpoints } from "@/services/api/endpoints";
 import { postData } from "@/services/api/requests";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useSuccessModal } from "@/services/store/useSuccessModal";
+// import { useSuccessModal } from "@/services/store/useSuccessModal";
 
 const useSaveTransaction = () => {
   const queryClient = useQueryClient();
@@ -12,7 +12,7 @@ const useSaveTransaction = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["transaction detail"] });
-      useSuccessModal.getState().setSuccess();
+      // useSuccessModal.getState().setSuccess();
     },
   });
 };

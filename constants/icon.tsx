@@ -5,6 +5,7 @@ import {
   CakeSlice,
   CreditCard,
   Dice6Icon,
+  Grip,
   HandCoins,
   History,
   Home,
@@ -16,14 +17,14 @@ import {
 } from "lucide-react-native";
 
 const icon: Record<
-  "user" | "history" | "modal" | "savedtransactions" | "profile",
+  "user" | "history" | "modal" | "savedtransactions" | "more",
   (props: { color: string; opacity: number }) => JSX.Element
 > = {
   user: (props: any) => <Home size={24} color={"#222"} {...props} />,
   history: (props: any) => <History size={24} color={"#222"} {...props} />,
   modal: (props: any) => <PlusIcon size={24} color={"#222"} {...props} />,
   savedtransactions: (props: any) => <WalletCards size={24} color={"#222"} {...props} />,
-  profile: (props: any) => <User size={24} color={"#222"} {...props} />,
+  more: (props: any) => <Grip size={24} color={"#222"} {...props} />,
 };
 
 const transactionIcons = {

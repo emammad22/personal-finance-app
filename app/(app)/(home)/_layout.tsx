@@ -50,9 +50,9 @@ const HomeLayout = () => {
           }}
         />
         <Tabs.Screen
-          name="profile"
+          name="more"
           options={{
-            title: "Profile",
+            title: "More",
           }}
         />
       </Tabs>
