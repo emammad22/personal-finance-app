@@ -25,8 +25,8 @@ const RecentTransactions = () => {
       <View className="p-5 flex flex-col gap-[15px]">
         {transactionQuery.data?.slice(0, 5).map((transaction: TransactionProps, idx: number) => {
           return (
-            <Link href={`/(app)/transactionDetail/${transaction?.id}`}>
-              <RecentTransactionItem key={idx} {...transaction} />
+            <Link key={idx} href={`/(app)/transactionDetail/${transaction?.id}`}>
+              <RecentTransactionItem  {...transaction} />
             </Link>
           );
         })}

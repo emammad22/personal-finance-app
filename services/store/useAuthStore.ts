@@ -72,11 +72,10 @@ const useAuthStore = create<UseAuthStore>((set, get) => ({
   },
   signOut: async () => {
     try {
-      await removeTokens();
-      set({ isAuth: false });
-      set({ user: null });
+      await AsyncStorage.multiRemove(["access_token", "refresh_token"]);
+      router.replace("/(auth)/sign-in");
     } catch (err) {
-      console.log('signout err , oops')
+      console.log("sign out err", err);
     }
   },
 }));

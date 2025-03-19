@@ -1,29 +1,22 @@
-import { Image, TouchableOpacity, View , ScrollView} from "react-native";
+import { Image, TouchableOpacity, View, ScrollView } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Typo from "@/components/Typo";
 import { useRouter } from "expo-router";
 import { Bell, LogOut } from "lucide-react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCurrentUser } from "@/features/auth/queries/use-current-user";
 import RecentTransactions from "@/components/transactions/recent-transactions";
+import { useAuthStore } from "@/services/store/useAuthStore";
 
 const Home = () => {
   const router = useRouter();
   const query = useQueryClient();
-
+  const { signOut } = useAuthStore();
   const { data } = useCurrentUser();
-  console.log("user data", data);
-
-  const signOut = async () => {
-    try {
-      await AsyncStorage.multiRemove(["access_token", "refresh_token"]);
-      query.clear();
-      router.replace("/(auth)/sign-in");
-    } catch (err) {
-      console.log("sign out err", err);
-    }
+  const handleSignOut = () => {
+    query.clear();
+    signOut();
   };
 
   return (
@@ -55,7 +48,7 @@ const Home = () => {
               <TouchableOpacity>
                 <Bell color={"white"} />
               </TouchableOpacity>
-              <TouchableOpacity onPress={signOut}>
+              <TouchableOpacity onPress={handleSignOut}>
                 <LogOut color={"white"} />
               </TouchableOpacity>
             </View>
@@ -69,11 +62,11 @@ const Home = () => {
             </View>
           </View>
         </View>
-          <View className="bg-[#fff] flex-1 rounded-t-3xl p-5">
-        <ScrollView>
+        <View className="bg-[#fff] flex-1 rounded-t-3xl p-5">
+          <ScrollView>
             <RecentTransactions />
-        </ScrollView>
-          </View>
+          </ScrollView>
+        </View>
       </View>
     </SafeAreaView>
   );
