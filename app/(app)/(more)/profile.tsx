@@ -10,17 +10,17 @@ import { useUserEdit } from "@/features/more/store/useUserEdit";
 
 const Profile = () => {
   const router = useRouter();
-  const CURRENT_USER = useCurrentUser().data;
+  const { data } = useCurrentUser();
   const query = useQueryClient();
   const { signOut } = useAuthStore();
-  const {setEditOpen} = useUserEdit()
-  const JOINED_DATE = new Date(CURRENT_USER?.date_joined as string).toLocaleString();
+  const { setEditOpen, isEditOpen } = useUserEdit();
+  const JOINED_DATE = new Date(data?.date_joined as string).toLocaleString();
 
   const handleSignOut = () => {
     query.clear();
     signOut();
   };
-  console.log("Current", CURRENT_USER);
+  console.log("Current", data);
 
   return (
     <SafeAreaView className="flex-1 bg-[#F6F8FA]">
@@ -36,7 +36,7 @@ const Profile = () => {
           <View className="w-[100px] h-[100px] rounded-full absolute top-[-35%] bg-[#eaeaea] p-5 flex justify-center items-center">
             <Image className="w-[60px] h-[60px]" source={require("@/assets/images/usernew.svg")} />
           </View>
-          <Text className="text-[20px] font-semibold">{CURRENT_USER?.fullname}</Text>
+          <Text className="text-[20px] font-semibold">{data?.fullname}</Text>
         </View>
         {/* user info part */}
         <View className="bg-white p-5 rounded-[10px] flex flex-col gap-5">
@@ -45,7 +45,7 @@ const Profile = () => {
               <Mail color={"#307BF6"} />
               <View className="flex flex-col gap-2">
                 <Text className="font-medium text-[18px]">E-poçt ünvanım</Text>
-                <Text className="text-[12px] text-[#000]/70">{CURRENT_USER?.email}</Text>
+                <Text className="text-[12px] text-[#000]/70">{data?.email}</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -62,7 +62,7 @@ const Profile = () => {
           <View className=" bg-white p-5 rounded-[10px] flex flex-row gap-5 items-center">
             <UserCog />
             <Text className="text-[16px] font-medium text-[#000]/80">Şəxsi məlumatlarımı redaktə et</Text>
-            <ChevronRight size={20}/>
+            <ChevronRight size={20} />
           </View>
         </TouchableOpacity>
         {/* logout */}
@@ -73,7 +73,8 @@ const Profile = () => {
           </View>
         </TouchableOpacity>
       </View>
-      <UserEdit/>
+      {isEditOpen && <UserEdit />}
+      
     </SafeAreaView>
   );
 };

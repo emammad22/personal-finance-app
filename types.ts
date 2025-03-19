@@ -124,6 +124,8 @@ export interface InputProps extends TextInputProps {
   onChange?: ControllerRenderProps["onChange"];
   onBlur?: ControllerRenderProps["onBlur"];
   value?: string;
+  classname? : string
+  containerClass? : string
 }
 
 export interface CustomButtonProps extends TouchableOpacityProps {

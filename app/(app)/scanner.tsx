@@ -1,28 +1,27 @@
-import { Alert, Dimensions, SafeAreaView, StyleSheet, View } from "react-native";
+import { Dimensions, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useCallback, useState } from "react";
 import { CameraView } from "expo-camera";
-import { useSuccessModal } from "@/services/store/useSuccessModal";
-import SuccessfulModal from "@/components/modals/SuccessfulModal";
 import { router, useFocusEffect } from "expo-router";
+import { useScanner } from "@/features/payment/store/useScanner";
+import { ArrowLeft } from "lucide-react-native";
 
 const Scanner = () => {
   const { width, height } = Dimensions.get("window");
-  const { setSuccess, setCloseSuccess } = useSuccessModal();
-  const [scanned, setScanned] = useState(false);
-  const [isCameraActive, setIsCameraActive] = useState(false);
+  const { isScanned, setScanned } = useScanner();
+  // const [isCameraActive, setIsCameraActive] = useState(false);
 
-  useFocusEffect(
-    useCallback(() => {
-      setIsCameraActive(true);
-      return () => setIsCameraActive(false);
-    }, []),
-  );
+  // useFocusEffect(
+  //   useCallback(() => {
+  //     setIsCameraActive(true);
+  //     return () => setIsCameraActive(false);
+  //   }, []),
+  // );
 
   console.log("width, height", width, height);
   const SCAN_BOX_SIZE = 250;
 
   const handleQRScanned = ({ bounds, data }: { bounds: any; data: any }) => {
-    if (scanned || !bounds || !bounds.origin) return;
+    if (isScanned || !bounds || !bounds.origin) return;
     const { x, y } = bounds.origin;
     const qrCenterX = x + bounds.size.width / 2;
     const qrCenterY = y + bounds.size.height / 2;
@@ -31,40 +30,30 @@ const Scanner = () => {
     const boxY = height / 2 - SCAN_BOX_SIZE / 2;
 
     if (qrCenterX > boxX && qrCenterX < boxX + SCAN_BOX_SIZE && qrCenterY > boxY && qrCenterY < boxY + SCAN_BOX_SIZE) {
-      if (!scanned) {
-        setScanned(true);
-        setSuccess();
+      if (!isScanned) {
+        setScanned();
+        router.navigate("/(app)/(payment)/qrInfo");
       }
     }
-  };
-
-  const handleNewQR = () => {
-    setCloseSuccess();
-    setScanned(false);
-    // router.navigate('/(app)/scanner')
-  };
-
-  const handleNavigate = () => {
-    setCloseSuccess();
-    setIsCameraActive(false);
-    setScanned(false);
-    router.navigate("/(app)/(home)/user");
   };
 
   return (
     <SafeAreaView className="flex-1" style={StyleSheet.absoluteFillObject}>
       <CameraView
-        autofocus="on"
-        active={isCameraActive}
+        // active={isCameraActive}
         barcodeScannerSettings={{
           barcodeTypes: ["qr"],
         }}
         style={StyleSheet.absoluteFillObject}
         facing="back"
-        onBarcodeScanned={scanned ? undefined : handleQRScanned}
+        onBarcodeScanned={isScanned ? undefined : handleQRScanned}
       />
       <View className={`absolute w-[390px] h-[844px] items-center justify-center`}>
-        <View className={`w-[390px] h-[297px] bg-black/50`} />
+        <View className={`w-[390px] h-[297px] bg-black/50`}>
+          <TouchableOpacity className="absolute top-[20%] left-[10%]" onPress={() => router.back()}>
+            <ArrowLeft size={30} color={"white"} />
+          </TouchableOpacity>
+        </View>
         <View className="flex flex-row">
           <View className={`h-[250px] w-[70px] bg-black/50`} />
           <View className={`w-[250px] h-[250px] border-[3px] border-white bg-transparent rounded-[8px]`} />
@@ -72,8 +61,6 @@ const Scanner = () => {
         </View>
         <View className={`w-[390px] h-[297px] bg-black/50`} />
       </View>
-
-      <SuccessfulModal mainFn={handleNewQR} secondaryFn={handleNavigate} main="Yenisini əlavə et" secondary="Bağla" />
     </SafeAreaView>
   );
 };
