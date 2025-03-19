@@ -5,13 +5,15 @@ import { useRouter } from "expo-router";
 import { useCurrentUser } from "@/features/auth/queries/use-current-user";
 import { useAuthStore } from "@/services/store/useAuthStore";
 import { useQueryClient } from "@tanstack/react-query";
+import UserEdit from "@/features/more/modals/user-edit-modal";
+import { useUserEdit } from "@/features/more/store/useUserEdit";
 
 const Profile = () => {
   const router = useRouter();
   const CURRENT_USER = useCurrentUser().data;
   const query = useQueryClient();
   const { signOut } = useAuthStore();
-
+  const {setEditOpen} = useUserEdit()
   const JOINED_DATE = new Date(CURRENT_USER?.date_joined as string).toLocaleString();
 
   const handleSignOut = () => {
@@ -56,7 +58,7 @@ const Profile = () => {
           </View>
         </View>
         {/* Edit user info */}
-        <TouchableOpacity>
+        <TouchableOpacity onPress={setEditOpen}>
           <View className=" bg-white p-5 rounded-[10px] flex flex-row gap-5 items-center">
             <UserCog />
             <Text className="text-[16px] font-medium text-[#000]/80">Şəxsi məlumatlarımı redaktə et</Text>
@@ -71,6 +73,7 @@ const Profile = () => {
           </View>
         </TouchableOpacity>
       </View>
+      <UserEdit/>
     </SafeAreaView>
   );
 };

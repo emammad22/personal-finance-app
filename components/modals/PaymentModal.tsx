@@ -33,8 +33,8 @@ const ScanModal = () => {
         setModalOpen();
       }}>
       <TouchableWithoutFeedback onPress={setModalOpen}>
-        <View className="flex-1 justify-end bg-white/60">
-          <View className="bg-white p-5 rounded-t-[30px] h-[230px]">
+        <View className="flex-1 justify-end bg-black/60">
+          <View className="bg-white p-5 rounded-t-[30px] min-h-[410px]">
             <Text className="text-[20px] mb-4 font-bold">Ödəniş üsulunu seçin</Text>
             <View className="flex flex-row justify-between gap-3">
               <TouchableOpacity onPress={handleQrScanner}>
