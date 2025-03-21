@@ -66,7 +66,7 @@ const useAuthStore = create<UseAuthStore>((set, get) => ({
       const { access, refresh } = await postData(authEndpoints.signIn, data);
       await AsyncStorage.setItem("access_token", access);
       await AsyncStorage.setItem("refresh_token", refresh);
-    router.push('/(app)/(home)/user')
+    router.replace('/(app)/(home)/user')
     } catch (err) {}
     set({ isAuth: true });
   },

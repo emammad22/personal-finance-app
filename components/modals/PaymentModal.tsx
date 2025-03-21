@@ -4,9 +4,11 @@ import { usePaymentModal } from "@/services/store/usePaymentModal";
 import { CameraIcon, ScanBarcode, TextCursorInputIcon } from "lucide-react-native";
 import { useRouter } from "expo-router";
 import { useCameraPermissions } from "expo-camera";
+import { useScanner } from "@/features/payment/store/useScanner";
 
 const ScanModal = () => {
   const { isModalOpen, setModalOpen } = usePaymentModal();
+  const {setCameraActive} = useScanner();
   const router = useRouter();
   const [permission, requestPermission] = useCameraPermissions();
 
@@ -21,6 +23,7 @@ const ScanModal = () => {
     requestPermission();
     if (isPermissionGranted) {
       router.navigate("/(app)/scanner");
+      setCameraActive()
       setModalOpen();
     }
   };

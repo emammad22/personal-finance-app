@@ -4,7 +4,6 @@ import TabBar from "@/components/tabs/TabBar";
 import { usePaymentModal } from "@/services/store/usePaymentModal";
 import ScanModal from "@/components/modals/PaymentModal";
 
-
 const HomeLayout = () => {
   const { setModalOpen } = usePaymentModal();
 
@@ -20,9 +19,10 @@ const HomeLayout = () => {
           name="user"
           options={{
             title: "Home",
+            
           }}
         />
-        
+
         <Tabs.Screen
           name="history"
           options={{
@@ -30,7 +30,7 @@ const HomeLayout = () => {
           }}
         />
         <Tabs.Screen
-        name="modal"
+          name="modal"
           listeners={(listener) => {
             setModalOpen();
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack, router } from "expo-router";
+import { Stack, router} from "expo-router";
 import { useCurrentUser } from "@/features/auth/queries/use-current-user";
 
 const AuthLayout = () => {
@@ -8,7 +8,7 @@ const AuthLayout = () => {
   if (currentUserQuery.data) {
     router.navigate("/(app)/(home)/user");
   }
-  return <Stack screenOptions={{ headerShown: false }}></Stack>;
+  return <Stack screenOptions={{ headerShown: false, gestureEnabled : false }}></Stack>;
 };
 
 export default AuthLayout;

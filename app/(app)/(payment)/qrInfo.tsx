@@ -5,14 +5,15 @@ import { ArrowLeft } from "lucide-react-native";
 import { router } from "expo-router";
 
 const QRInfo = () => {
-  const { setNotScanned } = useScanner();
+  const { setNotScanned, setCameraActive } = useScanner();
 
   return (
     <SafeAreaView>
       <View className="p-5 bg-blue-400">
         <TouchableOpacity onPress={()=>{
           setNotScanned()
-          router.back()
+          router.replace('/(app)/(home)/user')
+          setCameraActive();
         }}>
           <ArrowLeft size={30} />
         </TouchableOpacity>

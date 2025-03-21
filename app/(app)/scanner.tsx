@@ -1,5 +1,5 @@
 import { Dimensions, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import { CameraView } from "expo-camera";
 import { router, useFocusEffect } from "expo-router";
 import { useScanner } from "@/features/payment/store/useScanner";
@@ -7,15 +7,18 @@ import { ArrowLeft } from "lucide-react-native";
 
 const Scanner = () => {
   const { width, height } = Dimensions.get("window");
-  const { isScanned, setScanned } = useScanner();
-  // const [isCameraActive, setIsCameraActive] = useState(false);
+  const { isScanned, setScanned, setCameraInactive, isCameraActive, setCameraActive } = useScanner();
 
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     setIsCameraActive(true);
-  //     return () => setIsCameraActive(false);
-  //   }, []),
-  // );
+
+  useFocusEffect(
+    useCallback(()=>{
+      setCameraActive();
+      return ()=>{
+        console.log('screen unfocused, stopping camera ...')
+        setCameraInactive();
+      }
+    },[])
+  )
 
   console.log("width, height", width, height);
   const SCAN_BOX_SIZE = 250;
@@ -32,7 +35,7 @@ const Scanner = () => {
     if (qrCenterX > boxX && qrCenterX < boxX + SCAN_BOX_SIZE && qrCenterY > boxY && qrCenterY < boxY + SCAN_BOX_SIZE) {
       if (!isScanned) {
         setScanned();
-        router.navigate("/(app)/(payment)/qrInfo");
+        router.replace("/(app)/(payment)/qrInfo");
       }
     }
   };
@@ -40,7 +43,7 @@ const Scanner = () => {
   return (
     <SafeAreaView className="flex-1" style={StyleSheet.absoluteFillObject}>
       <CameraView
-        // active={isCameraActive}
+        active={isCameraActive}
         barcodeScannerSettings={{
           barcodeTypes: ["qr"],
         }}
