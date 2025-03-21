@@ -2,9 +2,11 @@ import { Image, SafeAreaView, StatusBar, Text, TouchableOpacity, View } from "re
 import React from "react";
 import { ChevronRight, Star } from "lucide-react-native";
 import { useRouter } from "expo-router";
+import { useCurrentUser } from "@/features/auth/queries/use-current-user";
 
 const Profile = () => {
   const router = useRouter();
+  const {data} = useCurrentUser();
 
   return (
     <SafeAreaView className="flex-1 bg-[#F6F8FA]">
@@ -22,7 +24,7 @@ const Profile = () => {
               <Image className="w-[40px] h-[40px]" source={require("@/assets/images/usernew.svg")} />
             </View>
             <View className="flex flex-col gap-1">
-              <Text className="text-[20px]">Eltun Məmmədov</Text>
+              <Text className="text-[20px]">{data?.fullname}</Text>
               <Text className="text-[16px]">QR və şəxsi məlumatlarım</Text>
             </View>
             <TouchableOpacity>
