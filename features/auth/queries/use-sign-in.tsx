@@ -31,7 +31,7 @@ const useSignIn = () => {
     onSuccess: async (data) => {
       await AsyncStorage.setItem("access_token", data.access);
       await AsyncStorage.setItem("refresh_token", data.refresh);
-      router.navigate("/(app)/(home)/user");
+      router.replace("/(app)/(home)/user");
     },
   });
 };

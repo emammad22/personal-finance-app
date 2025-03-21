@@ -10,7 +10,7 @@ const RecentTransactions = () => {
   const transactionQuery = useTransactions();
 
   const handleViewAll = () => {
-    router.navigate("/(app)/(home)/history");
+    router.replace("/(app)/(home)/history");
   };
 
   return (

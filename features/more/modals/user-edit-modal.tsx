@@ -13,15 +13,18 @@ import { Controller, useForm } from "react-hook-form";
 import Input from "@/components/Input";
 import { useCurrentUser } from "@/features/auth/queries/use-current-user";
 import { useEditUser } from "../queries/use-edit-user";
+import { useRouter } from "expo-router";
 
 const UserEdit = () => {
   const { setEditOpen, isEditOpen, setEditClose } = useUserEdit();
   const CURRENT_USER = useCurrentUser().data;
   const userMutation = useEditUser();
+  const router = useRouter();
   const form = useForm({ values: { first_name: CURRENT_USER?.first_name, last_name: CURRENT_USER?.last_name } });
 
   const handleUserMutation = () => {
     userMutation.mutate(form.getValues());
+    router.replace('/(app)/(home)/user')
   };
 
   return (

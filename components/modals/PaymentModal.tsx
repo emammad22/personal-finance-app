@@ -22,7 +22,7 @@ const ScanModal = () => {
   const handleQrScanner = async () => {
     requestPermission();
     if (isPermissionGranted) {
-      router.navigate("/(app)/scanner");
+      router.push("/(app)/scanner");
       setCameraActive()
       setModalOpen();
     }

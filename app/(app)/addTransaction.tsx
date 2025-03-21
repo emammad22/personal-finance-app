@@ -49,7 +49,7 @@ const AddTransaction = () => {
   };
 
   const handleLook = () => {
-    router.navigate("/(app)/(home)/history");
+    router.replace("/(app)/(home)/history");
     setCloseSuccess();
   };
 

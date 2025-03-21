@@ -6,8 +6,9 @@ const AuthLayout = () => {
   const currentUserQuery = useCurrentUser();
 
   if (currentUserQuery.data) {
-    router.navigate("/(app)/(home)/user");
+    router.replace("/(app)/(home)/user");
   }
+
   return <Stack screenOptions={{ headerShown: false, gestureEnabled : false }}></Stack>;
 };
 
