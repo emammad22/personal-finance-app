@@ -11,5 +11,5 @@ export type TransactionProps = {
     category: {
       id: number;
       name: string;
-    };
+    } | null;
   };

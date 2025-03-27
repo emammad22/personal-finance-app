@@ -1,8 +1,10 @@
 import {
   BadgeDollarSign,
   Banknote,
+  Beef,
   BusIcon,
   CakeSlice,
+  Candy,
   CreditCard,
   Dice6Icon,
   Grip,
@@ -11,7 +13,7 @@ import {
   Home,
   Plane,
   PlusIcon,
-  User,
+  Shirt,
   WalletCards,
   WalletMinimal,
 } from "lucide-react-native";
@@ -35,8 +37,11 @@ const transactionIcons = {
   income: (props: any) => <HandCoins size={props.size} color={"#fff"} />,
   Travel: (props: any) => <Plane size={props.size} color={"#fff"} />,
   Food: (props: any) => <CakeSlice size={props.size} color={"#fff"} />,
-  Transport: (props: any) => <BusIcon size={props.size}color={"#fff"} />,
+  Transport: (props: any) => <BusIcon size={props.size} color={"#fff"} />,
   Other: (props: any) => <Dice6Icon size={props.size} color={"#fff"} />,
+  Sweets: (props: any) => <Candy size={props.size} color={"#fff"} />,
+  Clothing: (props: any) => <Shirt size={props.size} color={"#fff"} />,
+  Meat: (props: any) => <Beef size={props.size} color={"#fff"} />,
 };
 
 export { icon, transactionIcons };

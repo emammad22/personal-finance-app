@@ -23,7 +23,7 @@ const TransactionModal = () => {
       }}>
       <TouchableWithoutFeedback onPress={setTransactionOpen}>
         <View className="flex-1 justify-end">
-          <View className="bg-white p-5 rounded-t-[30px] min-h-[410px]">
+          <View className="bg-white p-5 rounded-t-[30px] min-h-[230px]">
             <Text className="text-[20px] mb-4 font-bold">{transactionName} növünü seçin</Text>
             <View className="flex flex-row gap-3 flex-wrap">
               {transactionDatas?.map(({ name, value }, index) => {
@@ -32,8 +32,10 @@ const TransactionModal = () => {
                     onPress={() => handleInput(value)}
                     key={index}
                     className="w-[110px] p-5 flex items-center justify-center rounded-[20px] h-[80px] bg-[#307BF6]/80 gap-2">
-                    <View>{transactionIcons?.[name as keyof typeof transactionIcons]({size : 30})}</View>
-                    <Text className="text-white text-center font-bold">{ETransaction[name as keyof typeof ETransaction]}</Text>
+                    <View>{name ? transactionIcons?.[name as keyof typeof transactionIcons]({ size: 30 }) : null}</View>
+                    <Text className="text-white text-center font-bold">
+                      {ETransaction[name as keyof typeof ETransaction]}
+                    </Text>
                   </TouchableOpacity>
                 );
               })}

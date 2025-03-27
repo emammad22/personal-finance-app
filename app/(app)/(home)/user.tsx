@@ -45,7 +45,7 @@ const Home = () => {
               </View>
             </View>
             <View className="flex flex-row self-center gap-3">
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=> router.navigate('/(app)/(payment)/qrInfo')}>
                 <Bell color={"white"} />
               </TouchableOpacity>
               <TouchableOpacity onPress={handleSignOut}>

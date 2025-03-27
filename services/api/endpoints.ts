@@ -12,8 +12,13 @@ const paymentEndpoints = new (class {
 const transactionEndpoints = new (class {
   transactions = "payment/transactions/";
   savedTransactions = "payment/saved-transactions/";
-  details = (id : number)=> `payment/transactions/${id}`;
+  details = (id: number) => `payment/transactions/${id}`;
   save = (transaction_id: number) => `payment/transactions/${transaction_id}/toggle-save/`;
 })();
 
-export { authEndpoints, paymentEndpoints, transactionEndpoints };
+const billProcessingEndpoints = new (class {
+  scanBill = "payment/scan-bill/";
+  scanQR = "payment/scan-qr/";
+})();
+
+export { authEndpoints, paymentEndpoints, transactionEndpoints, billProcessingEndpoints };

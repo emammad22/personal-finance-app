@@ -36,11 +36,13 @@ const TransactionDetail = () => {
           <Text className="text-[16px] text-[#26273A]/70">{date}</Text>
         </View>
         <View className="flex flex-col justify-center items-center gap-5">
-          <Text className="text-[25px] font-semibold">{transactionDetailQuery.data?.category.name}</Text>
+          <Text className="text-[25px] font-semibold">{transactionDetailQuery.data?.category?.name}</Text>
           <View className="w-[92px] h-[92px] rounded-[15px] bg-[#B3C5F7] flex justify-center items-center">
-            {transactionIcons[transactionDetailQuery.data?.category.name as keyof typeof transactionIcons]?.({
-              size: 50,
-            })}
+            {transactionDetailQuery.data?.category?.name
+              ? transactionIcons[transactionDetailQuery.data?.category?.name as keyof typeof transactionIcons]?.({
+                  size: 50,
+                })
+              : null}
           </View>
           <Text className="font-bold text-[30px]">-{transactionDetailQuery.data?.amount} $</Text>
           <View className="flex flex-row gap-9">

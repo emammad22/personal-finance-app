@@ -37,6 +37,8 @@ const AddTransaction = () => {
     value: item.id,
   }));
 
+  console.log('converted coategory', convertedCategoryData)
+
   const handleSelect = (type: string, list: any[]) => {
     setTransactionOpen();
     setTransactionData(list);

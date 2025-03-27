@@ -32,7 +32,12 @@ yarn-error.*
 
 # local env files
 .env*.local
+.env.production
 
 # typescript
 *.tsbuildinfo
+
+# build files
+/android
+/ios
 .idea

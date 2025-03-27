@@ -72,6 +72,9 @@ export enum ETransaction {
   payment_type = "Payment Type",
   transaction_type = "Transaction Type",
   category = "Category",
+  Sweets = "Sweets",
+  Clothing = "Clothing",
+  Meat = "Meat"
 }
 
 export type TransactionType = {

@@ -9,10 +9,10 @@ const Transaction = ({ category, payment_type, amount, transaction_unique_id, tr
     <View className="border bg-white rounded-[15px] p-4 border-[#E0E8F2]/60 flex flex-row w-full  justify-between">
       <View className="flex flex-row gap-3">
         <View className="w-[52px] h-[52px] rounded-[12px] bg-[#B3C5F7] flex justify-center items-center">
-          {transactionIcons[category.name as keyof typeof transactionIcons]({size : 30})}
+          {category?.name ? transactionIcons[category?.name as keyof typeof transactionIcons]({size : 30}) : null}
         </View>
         <View className="flex flex-col gap-[5px]">
-          <Text className="font-bold text-[18px]">{category.name}</Text>
+          <Text className="font-bold text-[18px]">{category?.name}</Text>
           <Text className="font-extralight text-[16px]">{ETransaction[payment_type as keyof typeof ETransaction]}</Text>
           <View>
             <Text className="text-[12px] text-[#26273A]/60">Transaction ID</Text>

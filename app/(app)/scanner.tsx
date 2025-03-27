@@ -1,24 +1,25 @@
 import { Dimensions, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { CameraView } from "expo-camera";
 import { router, useFocusEffect } from "expo-router";
 import { useScanner } from "@/features/payment/store/useScanner";
 import { ArrowLeft } from "lucide-react-native";
+import { useScanQR } from "@/features/payment/queries/use-scan-qr";
 
 const Scanner = () => {
   const { width, height } = Dimensions.get("window");
   const { isScanned, setScanned, setCameraInactive, isCameraActive, setCameraActive } = useScanner();
-
+  const scanQrQuery = useScanQR();
 
   useFocusEffect(
-    useCallback(()=>{
+    useCallback(() => {
       setCameraActive();
-      return ()=>{
-        console.log('screen unfocused, stopping camera ...')
+      return () => {
+        console.log("screen unfocused, stopping camera ...");
         setCameraInactive();
-      }
-    },[])
-  )
+      };
+    }, []),
+  );
 
   console.log("width, height", width, height);
   const SCAN_BOX_SIZE = 250;
@@ -35,7 +36,8 @@ const Scanner = () => {
     if (qrCenterX > boxX && qrCenterX < boxX + SCAN_BOX_SIZE && qrCenterY > boxY && qrCenterY < boxY + SCAN_BOX_SIZE) {
       if (!isScanned) {
         setScanned();
-        router.replace("/(app)/(payment)/qrInfo");
+        router.replace("/(app)/(payment)/qrInfo");     
+        scanQrQuery.mutate({qr_data : data});
       }
     }
   };
