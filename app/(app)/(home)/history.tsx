@@ -7,6 +7,7 @@ import { TransactionProps } from "@/features/home/types";
 import { ChevronDown, CreditCard, SearchIcon, SlidersHorizontal } from "lucide-react-native";
 import { Link } from "expo-router";
 import SuccessfulModal from "@/components/modals/SuccessfulModal";
+import Statistics from "@/features/home/components/statistics";
 
 const History = () => {
   const transactionQuery = useTransactions();
@@ -49,18 +50,23 @@ const History = () => {
           </View>
         </View>
 
+        {/* Monthly statistic based on category */}
+
         <ScrollView
           className="flex flex-col  bg-[#E0E8F2]/70"
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingBottom: 110, paddingTop: 20 }}>
           {/* Filter */}
           {/* Transaction List */}
-          <View className="flex-1 flex-col gap-[15px] px-4 overflow-y">
+          <View className="bg-[#E0E8F2]/70 px-4">
+            <Statistics />
+          </View>
+          <View className="flex-1 flex-col gap-[15px] px-4 pt-4 overflow-y">
             {/* Transaction Card */}
             {Object.entries(transactionList).map(([date, transactions], idx) => {
               return (
                 <View className="flex flex-col gap-3">
-                  <Text>{date}</Text>
+                  <Text className="text-[19px]">{date}</Text>
                   <View className="flex flex-col gap-3">
                     {transactions?.map((transaction: TransactionProps, idx: number) => {
                       return (

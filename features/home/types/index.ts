@@ -24,3 +24,16 @@ export type UserCard = {
   is_active: boolean;
   image: null;
 };
+
+export type Category = {
+  category_id: number;
+  category_name: string;
+  transaction_count: number;
+  total_amount: number;
+  percentage: number;
+};
+
+export type CategoryStatistics = {
+  categories: Category[];
+  total_expense: number;
+};

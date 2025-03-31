@@ -26,7 +26,7 @@ const icon: Record<
   user: (props: any) => <Home size={24} color={"#222"} {...props} />,
   history: (props: any) => <History size={24} color={"#222"} {...props} />,
   modal: (props: any) => <PlusIcon size={24} color={"#222"} {...props} />,
-  ai : (props: any) => <Wand size={24} color={"#222"} {...props} />,
+  ai: (props: any) => <Wand size={24} color={"#222"} {...props} />,
   more: (props: any) => <Grip size={24} color={"#222"} {...props} />,
 };
 
@@ -45,4 +45,14 @@ const transactionIcons = {
   Meat: (props: any) => <Beef size={props.size} color={"#fff"} />,
 };
 
-export { icon, transactionIcons };
+const categoryColors = {
+  Sweets: "#2596be",
+  Clothing: "#abdbe3",
+  Transport: "#e28743",
+  Food: "#873e23",
+  Travel: "#9eeb34",
+  Other: "#eb34c6",
+  Meat : "#eb346e"
+};
+
+export { icon, transactionIcons, categoryColors };
