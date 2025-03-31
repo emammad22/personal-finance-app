@@ -11,6 +11,21 @@ import SuccessfulModal from "@/components/modals/SuccessfulModal";
 const History = () => {
   const transactionQuery = useTransactions();
 
+  const formattedTransactions = () => {
+    return transactionQuery.data.reduce((acc: any, transaction: TransactionProps) => {
+      const date = new Date(transaction.created_at);
+      const formattedDate = `${date.toLocaleString("en-US", { month: "long" })} ${date.getDate()}`;
+
+      if (!acc[formattedDate]) {
+        acc[formattedDate] = [];
+      }
+      acc[formattedDate].push(transaction);
+      return acc;
+    }, {} as Record<string, TransactionProps[]>);
+  };
+
+  const transactionList: Record<string, TransactionProps[]> = formattedTransactions();
+
   return (
     <SafeAreaView className="flex-1 bg-white">
       <StatusBar barStyle={"dark-content"} />
@@ -42,11 +57,20 @@ const History = () => {
           {/* Transaction List */}
           <View className="flex-1 flex-col gap-[15px] px-4 overflow-y">
             {/* Transaction Card */}
-            {transactionQuery?.data?.map((transaction: TransactionProps, idx: number) => {
+            {Object.entries(transactionList).map(([date, transactions], idx) => {
               return (
-                <Link key={idx} href={`/(app)/transactionDetail/${transaction.id}`}>
-                  <Transaction {...transaction} />
-                </Link>
+                <View className="flex flex-col gap-3">
+                  <Text>{date}</Text>
+                  <View className="flex flex-col gap-3">
+                    {transactions?.map((transaction: TransactionProps, idx: number) => {
+                      return (
+                        <Link href={`/(app)/transactionDetail/${transaction.id}`}>
+                          <Transaction {...transaction} />
+                        </Link>
+                      );
+                    })}
+                  </View>
+                </View>
               );
             })}
           </View>
