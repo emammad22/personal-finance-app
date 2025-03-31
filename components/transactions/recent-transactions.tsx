@@ -14,7 +14,7 @@ const RecentTransactions = () => {
   };
 
   return (
-    <View className="w-full bg-white rounded-[15px] border border-[#E0E8F2]/60">
+    <View className="w-full bg-white rounded-[15px] border border-[#E0E8F2]/60 mt-[120px]">
       <View className="p-5 flex flex-row justify-between items-center">
         <Text className="text-[#26273A] text-[18px]">Recent transactions</Text>
         <TouchableOpacity onPress={handleViewAll} className="border border-[#E0E8F2] px-3 py-[6px] rounded-[8px]">

@@ -16,16 +16,17 @@ import {
   Shirt,
   WalletCards,
   WalletMinimal,
+  Wand,
 } from "lucide-react-native";
 
 const icon: Record<
-  "user" | "history" | "modal" | "savedtransactions" | "more",
+  "user" | "history" | "modal" | "ai" | "more",
   (props: { color: string; opacity: number }) => JSX.Element
 > = {
   user: (props: any) => <Home size={24} color={"#222"} {...props} />,
   history: (props: any) => <History size={24} color={"#222"} {...props} />,
   modal: (props: any) => <PlusIcon size={24} color={"#222"} {...props} />,
-  savedtransactions: (props: any) => <WalletCards size={24} color={"#222"} {...props} />,
+  ai : (props: any) => <Wand size={24} color={"#222"} {...props} />,
   more: (props: any) => <Grip size={24} color={"#222"} {...props} />,
 };
 

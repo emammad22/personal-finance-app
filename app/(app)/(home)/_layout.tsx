@@ -44,9 +44,9 @@ const HomeLayout = () => {
           }}
         />
         <Tabs.Screen
-          name="savedtransactions"
+          name="ai"
           options={{
-            title: "Saved",
+            title: "AI",
           }}
         />
         <Tabs.Screen

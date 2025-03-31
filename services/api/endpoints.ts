@@ -2,6 +2,8 @@ const authEndpoints = new (class {
   signIn = "account/login/";
   signUp = "account/register/";
   user = "account/user/";
+  cards = "account/cards/";
+  cardDetail = (id: number) => `account/cards/${id}/`;
 })();
 
 const paymentEndpoints = new (class {
@@ -21,4 +23,8 @@ const billProcessingEndpoints = new (class {
   scanQR = "payment/scan-qr/";
 })();
 
-export { authEndpoints, paymentEndpoints, transactionEndpoints, billProcessingEndpoints };
+const notificationsEndpoints = new (class {
+  notifications = "core/notifications/";
+})();
+
+export { authEndpoints, paymentEndpoints, transactionEndpoints, billProcessingEndpoints, notificationsEndpoints };
