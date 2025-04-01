@@ -2,7 +2,8 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { useCategoryStatics } from "../queries/use-category-statistics";
 import { categoryColors } from "@/constants/icon";
-import { ArrowLeft, ChartPie, ChevronRight } from "lucide-react-native";
+import { ChartPie, ChevronRight } from "lucide-react-native";
+import { router } from "expo-router";
 
 const Statistics = () => {
   const categoryStatisticsQuery = useCategoryStatics();
@@ -50,13 +51,15 @@ const Statistics = () => {
         })}
       </View>
 
-      <TouchableOpacity className="border-t-2 p-5 border-[#E0E8F2]">
+      <TouchableOpacity
+        className="border-t-2 p-5 border-[#E0E8F2]"
+        onPress={() => router.replace("/(app)/category-statistics")}>
         <View className="flex flex-row justify-between">
           <View className="flex flex-row gap-3 items-center">
-            <ChartPie size={30}/>
+            <ChartPie size={30} />
             <Text className="text-[18px] text-blue-600 font-semibold">More details</Text>
           </View>
-          <ChevronRight/>
+          <ChevronRight />
         </View>
       </TouchableOpacity>
     </View>
