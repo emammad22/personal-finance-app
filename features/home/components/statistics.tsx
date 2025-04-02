@@ -20,6 +20,7 @@ const Statistics = () => {
         {statistics?.categories?.map((statistic, idx) => {
           return (
             <View
+            key={idx}
               style={{
                 backgroundColor: `${categoryColors?.[statistic.category_name as keyof typeof categoryColors]}`,
                 width: `${statistic.percentage}%`,

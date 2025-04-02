@@ -65,12 +65,12 @@ const History = () => {
             {/* Transaction Card */}
             {Object.entries(transactionList).map(([date, transactions], idx) => {
               return (
-                <View className="flex flex-col gap-3">
+                <View key={idx} className="flex flex-col gap-3">
                   <Text className="text-[19px]">{date}</Text>
                   <View className="flex flex-col gap-3">
                     {transactions?.map((transaction: TransactionProps, idx: number) => {
                       return (
-                        <Link href={`/(app)/transactionDetail/${transaction.id}`}>
+                        <Link key={idx} href={`/(app)/transactionDetail/${transaction.id}`}>
                           <Transaction {...transaction} />
                         </Link>
                       );

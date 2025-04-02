@@ -58,7 +58,7 @@ const CategoryStatistics = () => {
           <View className="flex flex-col gap-5">
             {statistics?.categories?.map((category, idx) => {
               return (
-                <View className="flex flex-row justify-between">
+                <View key={idx} className="flex flex-row justify-between">
                   <View className="flex flex-row gap-6 items-center">
                     <View className="p-3 bg-slate-400 rounded-[10px]">
                       {transactionIcons?.[category.category_name as keyof typeof transactionIcons]({ size: 30 })}
