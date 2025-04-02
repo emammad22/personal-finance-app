@@ -12,7 +12,7 @@ const useSaveTransaction = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["transaction detail"] });
-      // useSuccessModal.getState().setSuccess();
+      queryClient.invalidateQueries({ queryKey: ["saved-transactions"] });
     },
   });
 };

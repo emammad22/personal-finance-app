@@ -36,7 +36,7 @@ const Profile = () => {
         <View className="bg-white p-5 rounded-[10px] gap-6 flex flex-col">
           <Text className="font-semibold text-[16px]">Məhsullar və əməliyyatlar</Text>
           {/* saved-transactions */}
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=> router.navigate('/(app)/(more)/saved')}>
             <View className="flex flex-row justify-between items-center">
               <View className="flex flex-row  gap-4 items-center">
                 <View>

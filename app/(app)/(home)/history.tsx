@@ -67,10 +67,10 @@ const History = () => {
               return (
                 <View key={idx} className="flex flex-col gap-3">
                   <Text className="text-[19px]">{date}</Text>
-                  <View className="flex flex-col gap-3">
+                  <View className="flex flex-col gap-3" pointerEvents="box-none">
                     {transactions?.map((transaction: TransactionProps, idx: number) => {
                       return (
-                        <Link key={idx} href={`/(app)/transactionDetail/${transaction.id}`}>
+                        <Link key={idx} href={`/(app)/transactionDetail/${transaction.id}`} asChild>
                           <Transaction {...transaction} />
                         </Link>
                       );
